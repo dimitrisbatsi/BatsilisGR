@@ -8,6 +8,7 @@
   --color-bg-primary: #09090b; /* zinc-950 */
   --color-bg-secondary: #18181b; /* zinc-900 */
   --color-border-primary: #27272a; /* zinc-800 */
+  --color-brand-accent: #ad4d2b; /* Terracotta brand color */
 }
 
 @layer base {
@@ -25,7 +26,7 @@
   }
   
   ::selection {
-    background-color: var(--color-zinc-800);
+    background-color: rgba(173, 77, 43, 0.25); /* Subtle brand background */
     color: var(--color-zinc-50);
   }
   
@@ -82,7 +83,7 @@
   content: "—";
   position: absolute;
   left: 0;
-  color: var(--color-zinc-700);
+  color: var(--color-brand-accent); /* Terracotta brand bullet */
 }
 
 .prose-custom strong {

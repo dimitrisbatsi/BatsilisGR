@@ -45,11 +45,11 @@ const projectsWithContent = await Promise.all(
         <div class="space-y-2 text-xs font-mono text-zinc-400">
           <div class="flex items-center gap-2">
             <span class="text-zinc-600 w-12 shrink-0">EMAIL</span>
-            <a href="mailto:dimitrisbatsi@outlook.com" class="hover:text-zinc-100 hover:underline underline-offset-4 decoration-zinc-700 transition-colors">dimitrisbatsi@outlook.com</a>
+            <a href="mailto:dimitrisbatsi@outlook.com" class="hover:text-zinc-100 hover:underline underline-offset-4 decoration-brand-accent transition-colors">dimitrisbatsi@outlook.com</a>
           </div>
           <div class="flex items-center gap-2">
             <span class="text-zinc-600 w-12 shrink-0">PHONE</span>
-            <a href="tel:+306947246710" class="hover:text-zinc-100 hover:underline underline-offset-4 decoration-zinc-700 transition-colors">(0030) 6947246710</a>
+            <a href="tel:+306947246710" class="hover:text-zinc-100 hover:underline underline-offset-4 decoration-brand-accent transition-colors">(0030) 6947246710</a>
           </div>
           <div class="flex items-center gap-2">
             <span class="text-zinc-600 w-12 shrink-0">LOC</span>
@@ -143,7 +143,7 @@ const projectsWithContent = await Promise.all(
           {experienceWithContent.map(({ entry, Content }) => (
             <div class="relative group">
               <!-- Timeline node dot -->
-              <div class="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-900 border border-zinc-800 group-hover:bg-zinc-500 group-hover:border-zinc-400 transition-colors duration-200"></div>
+              <div class="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-900 border border-zinc-800 group-hover:bg-brand-accent group-hover:border-brand-accent transition-colors duration-200"></div>
               
               <div class="flex flex-col gap-1">
                 <div class="flex justify-between items-baseline flex-wrap gap-2">
@@ -172,7 +172,7 @@ const projectsWithContent = await Promise.all(
             <article class="group relative flex flex-col gap-1.5">
               <div class="flex justify-between items-baseline flex-wrap gap-2">
                 <h3 class="text-zinc-200 font-medium group-hover:text-white transition-colors duration-200 text-sm">
-                  <a href={`/blog/${post.id}/`} class="hover:underline underline-offset-4 decoration-zinc-700">
+                  <a href={`/blog/${post.id}/`} class="hover:underline underline-offset-4 decoration-brand-accent">
                     {post.data.title}
                   </a>
                 </h3>
