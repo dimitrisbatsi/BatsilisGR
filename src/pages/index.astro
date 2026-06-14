@@ -1,0 +1,163 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+// Query and sort Content Collections
+const experienceEntries = await getCollection('experience');
+const sortedExperience = experienceEntries.sort((a, b) => a.data.order - b.data.order);
+
+const projectEntries = await getCollection('projects');
+const sortedProjects = projectEntries.sort((a, b) => a.data.order - b.data.order);
+
+// Pre-render content components for all collection entries
+const experienceWithContent = await Promise.all(
+  sortedExperience.map(async (entry) => {
+    const { Content } = await render(entry);
+    return { entry, Content };
+  })
+);
+
+const projectsWithContent = await Promise.all(
+  sortedProjects.map(async (entry) => {
+    const { Content } = await render(entry);
+    return { entry, Content };
+  })
+);
+---
+
+<Layout>
+  <div class="max-w-5xl mx-auto px-6 py-12 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20">
+    
+    <!-- Left Column: Primary Identity & Contact Details (Sticky on desktop) -->
+    <header class="md:col-span-5 md:sticky md:top-24 md:h-[calc(100vh-14rem)] flex flex-col justify-between gap-12">
+      <div class="space-y-8">
+        <!-- Identity -->
+        <div class="space-y-2">
+          <h1 class="text-3xl font-bold tracking-tight text-zinc-100">Dimitrios P. Batsilis</h1>
+          <p class="text-zinc-400 font-mono text-sm tracking-wide">Senior .NET & Full-Stack Software Engineer</p>
+        </div>
+        
+        <!-- Contact Coordinates -->
+        <div class="space-y-2 text-xs font-mono text-zinc-400">
+          <div class="flex items-center gap-2">
+            <span class="text-zinc-600 w-12 shrink-0">EMAIL</span>
+            <a href="mailto:dimitrisbatsi@outlook.com" class="hover:text-zinc-100 hover:underline underline-offset-4 decoration-zinc-700 transition-colors">dimitrisbatsi@outlook.com</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-zinc-600 w-12 shrink-0">PHONE</span>
+            <a href="tel:+306947246710" class="hover:text-zinc-100 hover:underline underline-offset-4 decoration-zinc-700 transition-colors">(0030) 6947246710</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-zinc-600 w-12 shrink-0">LOC</span>
+            <span class="text-zinc-300">Thessaloniki, Greece</span>
+          </div>
+        </div>
+
+        <hr class="border-zinc-900" />
+
+        <!-- Narrative Summary -->
+        <div class="space-y-4 text-sm text-zinc-400 leading-relaxed font-sans">
+          <p>
+            Senior Software Engineer specializing in the .NET ecosystem, modern JavaScript frameworks (Vue.js, Nuxt 3), and enterprise data architecture.
+          </p>
+          <p>
+            Proven track record in building scalable backend APIs, ETL pipelines, and decoupled frontend applications.
+          </p>
+          <p>
+            Passionate about translating complex business logic into efficient SaaS solutions, optimizing cloud deployments (Vercel, Hetzner), and driving team workflows through agile environments.
+          </p>
+        </div>
+      </div>
+
+      <!-- Meta Coordinates (Footer-like metrics at bottom of left panel) -->
+      <div class="hidden md:block space-y-2 text-[10px] font-mono text-zinc-600 tracking-wider uppercase">
+        <div class="flex items-center gap-2">
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Status: Available for Freelance</span>
+        </div>
+        <div>TZ: EET (UTC+2 / UTC+3)</div>
+      </div>
+    </header>
+
+    <!-- Right Column: Skills, Projects, and Professional Timeline -->
+    <div class="md:col-span-7 space-y-16">
+      
+      <!-- Core Skills Section -->
+      <section class="space-y-6">
+        <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-500 font-semibold flex items-center gap-2">
+          <span>01 //</span> Core Skills
+        </h2>
+        <div class="divide-y divide-zinc-900 border-t border-b border-zinc-900 font-mono text-xs">
+          <div class="grid grid-cols-1 sm:grid-cols-3 py-3 gap-2">
+            <span class="text-zinc-500 uppercase tracking-wider">Backend & APIs</span>
+            <span class="sm:col-span-2 text-zinc-300">C#, .NET (Core / MVC / Web API), GraphQL, Python, RESTful Architecture</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 py-3 gap-2">
+            <span class="text-zinc-500 uppercase tracking-wider">Frontend</span>
+            <span class="sm:col-span-2 text-zinc-300">Vue.js, Nuxt 3, Astro, Javascript, HTML5/CSS3, Tailwind CSS</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 py-3 gap-2">
+            <span class="text-zinc-500 uppercase tracking-wider">Data Eng. & BI</span>
+            <span class="sm:col-span-2 text-zinc-300">Power BI, SQL Server, PostgreSQL, MySQL, ETL Pipelines, SSIS, Advanced SQL Queries</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 py-3 gap-2">
+            <span class="text-zinc-500 uppercase tracking-wider">DevOps & Cloud</span>
+            <span class="sm:col-span-2 text-zinc-300">Vercel, Hetzner, Coolify, CI/CD Pipelines, Git</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section class="space-y-6">
+        <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-500 font-semibold flex items-center gap-2">
+          <span>02 //</span> Independent Projects & SaaS
+        </h2>
+        <div class="space-y-10">
+          {projectsWithContent.map(({ entry, Content }) => (
+            <article class="group relative flex flex-col gap-2">
+              <div class="flex justify-between items-baseline flex-wrap gap-2">
+                <h3 class="text-zinc-200 font-medium group-hover:text-white transition-colors duration-200 text-base flex items-center gap-1.5">
+                  {entry.data.title}
+                </h3>
+                <span class="text-[11px] font-mono text-zinc-500 whitespace-nowrap">{entry.data.period}</span>
+              </div>
+              <div class="text-[11px] font-mono text-zinc-400 font-medium">{entry.data.role}</div>
+              <div class="text-zinc-400 text-sm mt-1 leading-relaxed prose-custom">
+                <Content />
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- Timeline/Experience Section -->
+      <section class="space-y-6">
+        <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-500 font-semibold flex items-center gap-2">
+          <span>03 //</span> Professional Experience
+        </h2>
+        <div class="space-y-10 border-l border-zinc-900 pl-4 ml-1">
+          {experienceWithContent.map(({ entry, Content }) => (
+            <div class="relative group">
+              <!-- Timeline node dot -->
+              <div class="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-900 border border-zinc-800 group-hover:bg-zinc-500 group-hover:border-zinc-400 transition-colors duration-200"></div>
+              
+              <div class="flex flex-col gap-1">
+                <div class="flex justify-between items-baseline flex-wrap gap-2">
+                  <h3 class="text-zinc-200 font-medium text-base group-hover:text-white transition-colors duration-200">
+                    {entry.data.role}
+                  </h3>
+                  <span class="text-[11px] font-mono text-zinc-500 whitespace-nowrap">{entry.data.startDate} &mdash; {entry.data.endDate}</span>
+                </div>
+                <div class="text-[11px] font-mono text-zinc-400">{entry.data.company} &middot; {entry.data.location}</div>
+                <div class="text-zinc-400 text-sm mt-2 leading-relaxed prose-custom">
+                  <Content />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+    </div>
+  </div>
+</Layout>
