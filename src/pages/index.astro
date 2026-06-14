@@ -9,6 +9,10 @@ const sortedExperience = experienceEntries.sort((a, b) => a.data.order - b.data.
 const projectEntries = await getCollection('projects');
 const sortedProjects = projectEntries.sort((a, b) => a.data.order - b.data.order);
 
+const postEntries = await getCollection('posts');
+const activePosts = postEntries.filter(post => !post.data.draft);
+const sortedPosts = activePosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
 // Pre-render content components for all collection entries
 const experienceWithContent = await Promise.all(
   sortedExperience.map(async (entry) => {
@@ -154,6 +158,35 @@ const projectsWithContent = await Promise.all(
                 </div>
               </div>
             </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Blog/Writing Section -->
+      <section class="space-y-6">
+        <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-500 font-semibold flex items-center gap-2">
+          <span>04 //</span> Writing
+        </h2>
+        <div class="space-y-6">
+          {sortedPosts.map((post) => (
+            <article class="group relative flex flex-col gap-1.5">
+              <div class="flex justify-between items-baseline flex-wrap gap-2">
+                <h3 class="text-zinc-200 font-medium group-hover:text-white transition-colors duration-200 text-sm">
+                  <a href={`/blog/${post.id}/`} class="hover:underline underline-offset-4 decoration-zinc-700">
+                    {post.data.title}
+                  </a>
+                </h3>
+                <span class="text-[10px] font-mono text-zinc-500 whitespace-nowrap">
+                  {new Date(post.data.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}
+                </span>
+              </div>
+              <p class="text-zinc-400 text-xs leading-relaxed max-w-xl">
+                {post.data.description}
+              </p>
+              <div class="text-[10px] font-mono text-zinc-500">
+                {post.data.readingTime}
+              </div>
+            </article>
           ))}
         </div>
       </section>

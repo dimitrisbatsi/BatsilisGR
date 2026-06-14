@@ -30,10 +30,13 @@ BatsilisGR/
 ├── src/
 │   ├── content/             # Type-safe portfolio data
 │   │   ├── experience/      # Professional timeline (.md)
-│   │   └── projects/        # Independent projects & SaaS (.md)
+│   │   ├── projects/        # Independent projects & SaaS (.md)
+│   │   └── posts/           # Blog articles (.md)
 │   ├── layouts/
 │   │   └── Layout.astro     # Core page HTML shell and SEO meta tags
 │   ├── pages/
+│   │   ├── blog/
+│   │   │   └── [id].astro   # Dynamic blog article page rendering
 │   │   └── index.astro      # Main landing layout & content queries
 │   ├── styles/
 │   │   └── global.css       # Tailwind v4 directives & theme configurations
