@@ -1,5 +1,5 @@
 ---
-title: "Clarif.io & Stokk B2B"
+title: "Clarif.io - E-commerce Analytics"
 period: "2025 - Present"
 role: "Lead Architect & Developer"
 order: 2
