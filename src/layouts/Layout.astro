@@ -6,58 +6,69 @@ interface Props {
   description?: string;
 }
 
-const { 
+const {
   title = "Dimitrios P. Batsilis | Senior .NET & Full-Stack Software Engineer",
-  description = "Senior Software Engineer specializing in the .NET ecosystem, modern JavaScript frameworks (Vue.js, Nuxt 3), and enterprise data architecture."
+  description = "Senior Software Engineer specializing in the .NET ecosystem, modern JavaScript frameworks (Vue.js, Nuxt 3), and enterprise data architecture.",
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://batsilis.gr");
+const canonicalURL = new URL(
+  Astro.url.pathname,
+  Astro.site || "https://batsilis.gr",
+);
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <!-- SEO Meta Tags -->
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content="Dimitrios P. Batsilis" />
     <link rel="canonical" href={canonicalURL} />
     <meta name="robots" content="index, follow" />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    
+    <meta property="og:image" content="/batsilis-logo.png" />
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    
+    <meta property="twitter:image" content="/batsilis-logo.png" />
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Geist+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Geist+Mono:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="bg-bg-primary text-zinc-300 selection:bg-zinc-800 selection:text-zinc-50 min-h-screen antialiased flex flex-col justify-between">
-    
+  <body
+    class="bg-bg-primary text-zinc-300 selection:bg-zinc-800 selection:text-zinc-50 min-h-screen antialiased flex flex-col justify-between"
+  >
     <!-- Thin structural border at the top of the viewport -->
     <div class="h-1 bg-brand-accent w-full"></div>
-    
+
     <main class="flex-grow">
       <slot />
     </main>
 
     <!-- Simple, premium minimalist footer -->
-    <footer class="border-t border-border-primary py-8 text-center text-xs font-mono text-zinc-500 max-w-5xl mx-auto w-full px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+    <footer
+      class="border-t border-border-primary py-8 text-center text-xs font-mono text-zinc-500 max-w-5xl mx-auto w-full px-6 flex flex-col md:flex-row justify-between items-center gap-4"
+    >
       <div>
         &copy; {new Date().getFullYear()} Dimitrios P. Batsilis. All rights reserved.
       </div>
