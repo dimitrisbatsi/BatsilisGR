@@ -122,17 +122,9 @@
         }
       }
 
-      // Small central impact core
-      const coreCircle = `
-        <circle cx="${center}" cy="${center}" r="3" fill="#FF9030" opacity="0.9" />
-        <circle cx="${center}" cy="${center}" r="6" stroke="#FF9030" stroke-width="1.2" fill="none" opacity="0.6" />
-        <circle cx="${center}" cy="${center}" r="12" stroke="#FF9030" stroke-width="0.7" stroke-dasharray="2 3" fill="none" opacity="0.4" />
-      `;
-
       crack.innerHTML = `
         <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" class="overflow-visible drop-shadow-[0_0_8px_rgba(255,144,48,0.7)]">
           ${pathLines}
-          ${coreCircle}
         </svg>
       `;
 
