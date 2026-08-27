@@ -4,6 +4,7 @@ period: "Mar 2026 - Present"
 role: "Founder & Product Architect"
 badge: "Live B2B SaaS"
 tags: [".NET Web API", "Nuxt 3", "PostgreSQL", "Multi-Tenant"]
+link: "https://www.clarif.io/"
 order: 2
 ---
 

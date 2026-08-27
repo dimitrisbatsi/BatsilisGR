@@ -183,11 +183,23 @@ const projectsWithContent = await Promise.all(
         </h2>
         <div class="space-y-6">
           {projectsWithContent.map(({ entry, Content }) => (
-            <article class="p-6 rounded-xl bg-zinc-900/30 border border-zinc-800/80 hover:border-brand-accent/40 hover:bg-zinc-900/50 transition-all duration-200 flex flex-col gap-3 group">
+            <article class="p-6 rounded-xl bg-zinc-900/30 border border-zinc-800/80 hover:border-brand-accent/40 hover:bg-zinc-900/50 transition-all duration-200 flex flex-col gap-3.5 group">
               <div class="flex justify-between items-baseline flex-wrap gap-2">
                 <div class="flex items-center gap-2.5">
-                  <h3 class="text-white font-semibold text-lg group-hover:text-white transition-colors">
-                    {entry.data.title}
+                  <h3 class="text-white font-semibold text-lg transition-colors">
+                    {entry.data.link ? (
+                      <a 
+                        href={entry.data.link} 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        class="hover:text-brand-accent transition-colors inline-flex items-center gap-1.5"
+                      >
+                        <span>{entry.data.title}</span>
+                        <span class="text-xs text-zinc-500 group-hover:text-brand-accent group-hover:translate-x-0.5 transition-all">&rarr;</span>
+                      </a>
+                    ) : (
+                      <span>{entry.data.title}</span>
+                    )}
                   </h3>
                   {entry.data.badge && (
                     <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-brand-accent/15 text-brand-accent border border-brand-accent/30 font-medium">
@@ -206,15 +218,29 @@ const projectsWithContent = await Promise.all(
                 <Content />
               </div>
 
-              {entry.data.tags && entry.data.tags.length > 0 && (
-                <div class="flex flex-wrap gap-1.5 pt-2 border-t border-zinc-800/50">
-                  {entry.data.tags.map((tag) => (
-                    <span class="px-2 py-0.5 rounded bg-zinc-800/50 text-[10px] font-mono text-zinc-400 border border-zinc-700/40">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
+              <div class="flex items-center justify-between flex-wrap gap-3 pt-3 border-t border-zinc-800/60">
+                {entry.data.tags && entry.data.tags.length > 0 ? (
+                  <div class="flex flex-wrap gap-1.5">
+                    {entry.data.tags.map((tag) => (
+                      <span class="px-2 py-0.5 rounded bg-zinc-800/50 text-[10px] font-mono text-zinc-400 border border-zinc-700/40">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                ) : <div></div>}
+
+                {entry.data.link && (
+                  <a 
+                    href={entry.data.link} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-brand-accent/10 hover:bg-brand-accent/20 border border-brand-accent/30 hover:border-brand-accent/60 text-brand-accent hover:text-white text-xs font-mono font-medium transition-all duration-200 shadow-sm"
+                  >
+                    <span>Visit Website</span>
+                    <span class="text-xs">&rarr;</span>
+                  </a>
+                )}
+              </div>
             </article>
           ))}
         </div>
