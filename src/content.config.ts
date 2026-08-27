@@ -19,6 +19,8 @@ const projects = defineCollection({
     title: z.string(),
     period: z.string(),
     role: z.string(),
+    badge: z.string().optional(),
+    tags: z.array(z.string()).optional(),
     highlights: z.array(z.string()).optional(),
     link: z.string().url().optional(),
     order: z.number().default(0),

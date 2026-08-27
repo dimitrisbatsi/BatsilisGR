@@ -1,11 +1,13 @@
 ---
 title: "Clarif.io - E-commerce Analytics"
-period: "2025 - Present"
-role: "Lead Architect & Developer"
+period: "Mar 2026 - Present"
+role: "Founder & Product Architect"
+badge: "Live B2B SaaS"
+tags: [".NET Web API", "Nuxt 3", "PostgreSQL", "Multi-Tenant"]
 order: 2
 ---
 
-Architected and developed multi-tenant B2B platforms focused on e-commerce analytics and enterprise resource management. 
-- Designed and engineered a robust, secure backend using **.NET Web API**.
-- Crafted highly reactive, accessible user interfaces using **Vue.js**, **Nuxt 3**, and **Tailwind CSS**.
-- Implemented multi-tenant data isolation and optimized telemetry for analytics processing.
+Multi-tenant B2B analytics and enterprise inventory intelligence platform.
+- Architected the end-to-end product ecosystem, including tenant isolation strategies and telemetry aggregation pipelines.
+- Engineered high-throughput backend services using **.NET Web API** and distributed SQL databases.
+- Crafted highly reactive, data-dense dashboards with **Vue.js**, **Nuxt 3**, and **Tailwind CSS**.

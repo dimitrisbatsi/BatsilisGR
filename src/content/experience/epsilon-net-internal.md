@@ -1,5 +1,5 @@
 ---
-role: "Software Engineer - Internal Solutions Engineer"
+role: "Solutions Engineer & Enterprise Architect"
 company: "EPSILON NET SA"
 location: "Thessaloniki, Greece"
 startDate: "Jan 2025"
@@ -7,8 +7,8 @@ endDate: "Present"
 order: 1
 ---
 
-- Designed and built an enterprise-level ticketing system leveraging **ASP.NET Core MVC** and **C#**.
-- Architected a high-performance **Headless CMS Documentation Hub** using WordPress as content manager, and **GraphQL** and **Astro** for a lightning-fast decoupled frontend.
-- Engineered automated **Python ETL pipelines** to process and sync enterprise data.
-- Spearheaded team transition and workflow optimization in **Jira**.
-- Developed interactive business intelligence reports and dashboards in **Power BI**.
+- Architected and delivered an enterprise ticketing and workflow platform utilizing **ASP.NET Core MVC** and **C#**.
+- Designed a high-performance **Headless Documentation Platform** leveraging WordPress as content manager, **GraphQL**, and **Astro** for decoupled, sub-second rendering.
+- Engineered automated **Python ETL pipelines** for cross-system enterprise synchronization and validation.
+- Spearheaded engineering workflow optimization, governance, and project structuring in **Jira**.
+- Built executive Business Intelligence telemetry and interactive dashboards in **Power BI**.

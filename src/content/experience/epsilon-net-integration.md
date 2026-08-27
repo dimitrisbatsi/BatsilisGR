@@ -1,5 +1,5 @@
 ---
-role: "Enterprise Software Integration Developer"
+role: "Enterprise Solutions & Integration Specialist"
 company: "EPSILON NET SA"
 location: "Thessaloniki, Greece"
 startDate: "Apr 2022"
@@ -7,6 +7,6 @@ endDate: "Dec 2024"
 order: 2
 ---
 
-- Developed and maintained custom **JavaScript integrations** to bridge enterprise systems.
-- Architected complex **SQL database schemas**, stored procedures, and triggers to support integration pipelines.
-- Spearheaded system administration, diagnosing performance bottlenecks and optimizing SQL query execution.
+- Architected and maintained mission-critical **JavaScript integration bridges** interconnecting distributed enterprise software suites.
+- Designed high-availability **SQL database schemas**, complex stored procedures, and data pipelines to support large-scale enterprise transactions.
+- Diagnosed performance bottlenecks and led database tuning and query execution optimization.

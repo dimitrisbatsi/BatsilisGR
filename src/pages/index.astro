@@ -32,106 +32,189 @@ const projectsWithContent = await Promise.all(
 <Layout>
   <div class="max-w-5xl mx-auto px-6 py-12 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20">
     
-    <!-- Left Column: Primary Identity & Contact Details (Sticky on desktop) -->
-    <header class="md:col-span-5 md:sticky md:top-24 md:h-[calc(100vh-14rem)] flex flex-col justify-between gap-12">
+    <!-- Left Column: Primary Identity, Philosophy & Coordinates (Sticky on desktop) -->
+    <header class="md:col-span-5 md:sticky md:top-24 md:h-[calc(100vh-14rem)] flex flex-col justify-between gap-10">
       <div class="space-y-8">
         <!-- Identity -->
         <div class="space-y-4">
           <img src="/favicon.svg" alt="Dimitrios P. Batsilis Logo" class="w-12 h-12 select-none pointer-events-none" />
           <div class="space-y-2">
-            <h1 class="text-3xl font-bold tracking-tight text-zinc-100">Dimitrios P. Batsilis</h1>
-            <p class="text-zinc-400 font-mono text-sm tracking-wide">Senior .NET & Full-Stack Software Engineer</p>
+            <h1 class="text-3xl font-bold tracking-tight text-white">Dimitrios P. Batsilis</h1>
+            <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-zinc-900/90 border border-zinc-800 text-xs font-mono text-brand-accent shadow-sm">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse"></span>
+              <span>Digital Product & Solutions Architect</span>
+            </div>
           </div>
         </div>
         
-        <!-- Contact Coordinates -->
-        <div class="space-y-2 text-xs font-mono text-zinc-400">
+        <!-- Coordinates & Presence -->
+        <div class="space-y-2.5 text-xs font-mono text-zinc-400">
           <div class="flex items-center gap-2">
-            <span class="text-zinc-600 w-12 shrink-0">EMAIL</span>
-            <a href="mailto:dimitrisbatsi@outlook.com" class="hover:text-zinc-100 hover:underline underline-offset-4 decoration-brand-accent transition-colors">dimitrisbatsi@outlook.com</a>
+            <span class="text-zinc-500 w-14 shrink-0 text-[11px]">EMAIL</span>
+            <a href="mailto:dimitrisbatsi@outlook.com" class="text-zinc-300 hover:text-brand-accent hover:underline underline-offset-4 transition-colors">dimitrisbatsi@outlook.com</a>
           </div>
           <div class="flex items-center gap-2">
-            <span class="text-zinc-600 w-12 shrink-0">PHONE</span>
-            <a href="tel:+306947246710" class="hover:text-zinc-100 hover:underline underline-offset-4 decoration-brand-accent transition-colors">(0030) 6947246710</a>
+            <span class="text-zinc-500 w-14 shrink-0 text-[11px]">PHONE</span>
+            <a href="tel:+306947246710" class="text-zinc-300 hover:text-brand-accent hover:underline underline-offset-4 transition-colors">(0030) 6947246710</a>
           </div>
           <div class="flex items-center gap-2">
-            <span class="text-zinc-600 w-12 shrink-0">LOC</span>
+            <span class="text-zinc-500 w-14 shrink-0 text-[11px]">LOCATION</span>
             <span class="text-zinc-300">Thessaloniki, Greece</span>
+          </div>
+          <div class="flex items-center gap-2 pt-1">
+            <span class="text-zinc-500 w-14 shrink-0 text-[11px]">LINKS</span>
+            <div class="flex items-center gap-3 text-zinc-300">
+              <a href="https://github.com/dimitrisbatsi" target="_blank" rel="noreferrer" class="hover:text-brand-accent transition-colors">GitHub &rarr;</a>
+              <span class="text-zinc-700">&middot;</span>
+              <a href="https://www.chilistudio.gr/" target="_blank" rel="noreferrer" class="hover:text-brand-accent transition-colors">Chili Studio &rarr;</a>
+            </div>
           </div>
         </div>
 
-        <hr class="border-zinc-900" />
+        <hr class="border-zinc-800/80" />
 
-        <!-- Narrative Summary -->
+        <!-- Narrative & Architectural Vision -->
         <div class="space-y-4 text-sm text-zinc-400 leading-relaxed font-sans">
           <p>
-            Senior Software Engineer specializing in the .NET ecosystem, modern JavaScript frameworks (Vue.js, Nuxt 3), and enterprise data architecture.
+            Digital Product & Solutions Architect bridging strategic business vision with resilient system architecture, modern full-stack engineering, and cloud scalability.
           </p>
           <p>
-            Proven track record in building scalable backend APIs, ETL pipelines, and decoupled frontend applications.
+            Specialized in architecting high-performance .NET backend platforms, reactive decoupled frontends (Vue.js, Nuxt 3, Astro), automated data pipelines, and AI-augmented applications.
           </p>
           <p>
-            Passionate about translating complex business logic into efficient SaaS solutions, optimizing cloud deployments (Vercel, Hetzner), and driving team workflows through agile environments.
+            Experienced in transforming complex enterprise domains into robust multi-tenant SaaS products, optimizing infrastructure deployments, and driving high-velocity engineering practices.
           </p>
         </div>
       </div>
 
       <!-- Meta Coordinates (Footer-like metrics at bottom of left panel) -->
-      <div class="hidden md:block space-y-2 text-[10px] font-mono text-zinc-600 tracking-wider uppercase">
+      <div class="hidden md:block space-y-2 text-[10px] font-mono text-zinc-500 tracking-wider uppercase">
         <div class="flex items-center gap-2">
-          <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>Status: Available for Freelance</span>
+          <span class="inline-block w-2 h-2 rounded-full bg-brand-accent animate-pulse shadow-[0_0_8px_rgba(255,144,48,0.8)]"></span>
+          <span class="text-zinc-400">Status: Available for Consulting & Architecture</span>
         </div>
         <div>TZ: EET (UTC+2 / UTC+3)</div>
       </div>
     </header>
 
-    <!-- Right Column: Skills, Projects, and Professional Timeline -->
+    <!-- Right Column: Domains, Projects, Experience, and Writing -->
     <div class="md:col-span-7 space-y-16">
       
-      <!-- Core Skills Section -->
+      <!-- Core Architectural Domains Section -->
       <section class="space-y-6">
-        <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-500 font-semibold flex items-center gap-2">
-          <span>01 //</span> Core Skills
+        <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-400 font-semibold flex items-center gap-2">
+          <span class="text-brand-accent">01 //</span> Architectural Domains & Core Stack
         </h2>
-        <div class="divide-y divide-zinc-900 border-t border-b border-zinc-900 font-mono text-xs">
-          <div class="grid grid-cols-1 sm:grid-cols-3 py-3 gap-2">
-            <span class="text-zinc-500 uppercase tracking-wider">Backend & APIs</span>
-            <span class="sm:col-span-2 text-zinc-300">C#, .NET (Core / MVC / Web API), GraphQL, Python, RESTful Architecture</span>
+        <div class="grid grid-cols-1 gap-3.5 font-mono text-xs">
+          <!-- Domain 1 -->
+          <div class="p-4 rounded-xl bg-zinc-900/40 border border-zinc-800/80 hover:border-brand-accent/40 transition-all duration-200 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-brand-accent uppercase tracking-wider font-semibold">Solutions & System Architecture</span>
+              <span class="text-[10px] text-zinc-500">SYSTEM DESIGN</span>
+            </div>
+            <p class="text-zinc-300 font-sans text-xs leading-relaxed">
+              Multi-tenant SaaS Architecture, Microservices, Domain-Driven Design (DDD), Distributed Systems, REST & GraphQL APIs.
+            </p>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="px-2 py-0.5 rounded bg-zinc-800/60 text-[10px] text-zinc-300 border border-zinc-700/50">Multi-Tenant SaaS</span>
+              <span class="px-2 py-0.5 rounded bg-zinc-800/60 text-[10px] text-zinc-300 border border-zinc-700/50">Microservices</span>
+              <span class="px-2 py-0.5 rounded bg-zinc-800/60 text-[10px] text-zinc-300 border border-zinc-700/50">GraphQL</span>
+              <span class="px-2 py-0.5 rounded bg-zinc-800/60 text-[10px] text-zinc-300 border border-zinc-700/50">REST Architecture</span>
+            </div>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-3 py-3 gap-2">
-            <span class="text-zinc-500 uppercase tracking-wider">Frontend</span>
-            <span class="sm:col-span-2 text-zinc-300">Vue.js, Nuxt 3, Astro, Javascript, HTML5/CSS3, Tailwind CSS</span>
+
+          <!-- Domain 2 -->
+          <div class="p-4 rounded-xl bg-zinc-900/40 border border-zinc-800/80 hover:border-brand-accent/40 transition-all duration-200 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-brand-accent uppercase tracking-wider font-semibold">Product & Full-Stack Engineering</span>
+              <span class="text-[10px] text-zinc-500">ENGINEERING</span>
+            </div>
+            <p class="text-zinc-300 font-sans text-xs leading-relaxed">
+              C#, .NET 8/9 (Core / Web API), Vue.js, Nuxt 3, Astro, Modern Web Performance, Reactive UI/UX Systems.
+            </p>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="px-2 py-0.5 rounded bg-zinc-800/60 text-[10px] text-zinc-300 border border-zinc-700/50">C# / .NET 9</span>
+              <span class="px-2 py-0.5 rounded bg-zinc-800/60 text-[10px] text-zinc-300 border border-zinc-700/50">Nuxt 3 / Vue.js</span>
+              <span class="px-2 py-0.5 rounded bg-zinc-800/60 text-[10px] text-zinc-300 border border-zinc-700/50">Astro</span>
+              <span class="px-2 py-0.5 rounded bg-zinc-800/60 text-[10px] text-zinc-300 border border-zinc-700/50">Tailwind CSS</span>
+            </div>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-3 py-3 gap-2">
-            <span class="text-zinc-500 uppercase tracking-wider">Data Eng. & BI</span>
-            <span class="sm:col-span-2 text-zinc-300">Power BI, SQL Server, PostgreSQL, MySQL, ETL Pipelines, SSIS, Advanced SQL Queries</span>
+
+          <!-- Domain 3 -->
+          <div class="p-4 rounded-xl bg-zinc-900/40 border border-zinc-800/80 hover:border-brand-accent/40 transition-all duration-200 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-brand-accent uppercase tracking-wider font-semibold">Data Engineering & Intelligence</span>
+              <span class="text-[10px] text-zinc-500">DATA & AI</span>
+            </div>
+            <p class="text-zinc-300 font-sans text-xs leading-relaxed">
+              SQL Server, PostgreSQL, Automated ETL Pipelines, Python Data Processing, Power BI & Business Intelligence.
+            </p>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="px-2 py-0.5 rounded bg-zinc-800/60 text-[10px] text-zinc-300 border border-zinc-700/50">SQL Server</span>
+              <span class="px-2 py-0.5 rounded bg-zinc-800/60 text-[10px] text-zinc-300 border border-zinc-700/50">PostgreSQL</span>
+              <span class="px-2 py-0.5 rounded bg-zinc-800/60 text-[10px] text-zinc-300 border border-zinc-700/50">Python ETL</span>
+              <span class="px-2 py-0.5 rounded bg-zinc-800/60 text-[10px] text-zinc-300 border border-zinc-700/50">Power BI</span>
+            </div>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-3 py-3 gap-2">
-            <span class="text-zinc-500 uppercase tracking-wider">DevOps & Cloud</span>
-            <span class="sm:col-span-2 text-zinc-300">Vercel, Hetzner, Coolify, CI/CD Pipelines, Git</span>
+
+          <!-- Domain 4 -->
+          <div class="p-4 rounded-xl bg-zinc-900/40 border border-zinc-800/80 hover:border-brand-accent/40 transition-all duration-200 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-brand-accent uppercase tracking-wider font-semibold">Cloud, DevOps & Delivery</span>
+              <span class="text-[10px] text-zinc-500">INFRASTRUCTURE</span>
+            </div>
+            <p class="text-zinc-300 font-sans text-xs leading-relaxed">
+              CI/CD Automation Pipelines, Hetzner, Vercel, Coolify, Docker, Performance Optimization & Security.
+            </p>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="px-2 py-0.5 rounded bg-zinc-800/60 text-[10px] text-zinc-300 border border-zinc-700/50">CI/CD Pipelines</span>
+              <span class="px-2 py-0.5 rounded bg-zinc-800/60 text-[10px] text-zinc-300 border border-zinc-700/50">Docker</span>
+              <span class="px-2 py-0.5 rounded bg-zinc-800/60 text-[10px] text-zinc-300 border border-zinc-700/50">Hetzner / Vercel</span>
+              <span class="px-2 py-0.5 rounded bg-zinc-800/60 text-[10px] text-zinc-300 border border-zinc-700/50">Coolify</span>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- Projects Section -->
       <section class="space-y-6">
-        <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-500 font-semibold flex items-center gap-2">
-          <span>02 //</span> Independent Projects & SaaS
+        <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-400 font-semibold flex items-center gap-2">
+          <span class="text-brand-accent">02 //</span> Digital Products & Independent Ventures
         </h2>
-        <div class="space-y-10">
+        <div class="space-y-6">
           {projectsWithContent.map(({ entry, Content }) => (
-            <article class="group relative flex flex-col gap-2">
+            <article class="p-6 rounded-xl bg-zinc-900/30 border border-zinc-800/80 hover:border-brand-accent/40 hover:bg-zinc-900/50 transition-all duration-200 flex flex-col gap-3 group">
               <div class="flex justify-between items-baseline flex-wrap gap-2">
-                <h3 class="text-zinc-200 font-medium group-hover:text-white transition-colors duration-200 text-base flex items-center gap-1.5">
-                  {entry.data.title}
-                </h3>
+                <div class="flex items-center gap-2.5">
+                  <h3 class="text-white font-semibold text-lg group-hover:text-white transition-colors">
+                    {entry.data.title}
+                  </h3>
+                  {entry.data.badge && (
+                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-brand-accent/15 text-brand-accent border border-brand-accent/30 font-medium">
+                      {entry.data.badge}
+                    </span>
+                  )}
+                </div>
                 <span class="text-[11px] font-mono text-zinc-500 whitespace-nowrap">{entry.data.period}</span>
               </div>
-              <div class="text-[11px] font-mono text-zinc-400 font-medium">{entry.data.role}</div>
-              <div class="text-zinc-400 text-sm mt-1 leading-relaxed prose-custom">
+
+              <div class="text-[11px] font-mono text-brand-accent font-medium">
+                {entry.data.role}
+              </div>
+
+              <div class="text-zinc-300 text-sm leading-relaxed prose-custom">
                 <Content />
               </div>
+
+              {entry.data.tags && entry.data.tags.length > 0 && (
+                <div class="flex flex-wrap gap-1.5 pt-2 border-t border-zinc-800/50">
+                  {entry.data.tags.map((tag) => (
+                    <span class="px-2 py-0.5 rounded bg-zinc-800/50 text-[10px] font-mono text-zinc-400 border border-zinc-700/40">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </article>
           ))}
         </div>
@@ -139,24 +222,24 @@ const projectsWithContent = await Promise.all(
 
       <!-- Timeline/Experience Section -->
       <section class="space-y-6">
-        <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-500 font-semibold flex items-center gap-2">
-          <span>03 //</span> Professional Experience
+        <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-400 font-semibold flex items-center gap-2">
+          <span class="text-brand-accent">03 //</span> Professional Experience & Enterprise Solutions
         </h2>
-        <div class="space-y-10 border-l border-zinc-900 pl-4 ml-1">
+        <div class="space-y-8 border-l border-zinc-800/80 pl-5 ml-1">
           {experienceWithContent.map(({ entry, Content }) => (
             <div class="relative group">
               <!-- Timeline node dot -->
-              <div class="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-900 border border-zinc-800 group-hover:bg-brand-accent group-hover:border-brand-accent transition-colors duration-200"></div>
+              <div class="absolute -left-[25px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-900 border border-zinc-700 group-hover:bg-brand-accent group-hover:border-brand-accent group-hover:shadow-[0_0_8px_rgba(255,144,48,0.7)] transition-all duration-200"></div>
               
-              <div class="flex flex-col gap-1">
+              <div class="flex flex-col gap-1.5">
                 <div class="flex justify-between items-baseline flex-wrap gap-2">
-                  <h3 class="text-zinc-200 font-medium text-base group-hover:text-white transition-colors duration-200">
+                  <h3 class="text-zinc-100 font-medium text-base group-hover:text-white transition-colors duration-200">
                     {entry.data.role}
                   </h3>
                   <span class="text-[11px] font-mono text-zinc-500 whitespace-nowrap">{entry.data.startDate} &mdash; {entry.data.endDate}</span>
                 </div>
                 <div class="text-[11px] font-mono text-zinc-400">{entry.data.company} &middot; {entry.data.location}</div>
-                <div class="text-zinc-400 text-sm mt-2 leading-relaxed prose-custom">
+                <div class="text-zinc-400 text-sm mt-1 leading-relaxed prose-custom">
                   <Content />
                 </div>
               </div>
@@ -167,16 +250,17 @@ const projectsWithContent = await Promise.all(
 
       <!-- Blog/Writing Section -->
       <section class="space-y-6">
-        <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-500 font-semibold flex items-center gap-2">
-          <span>04 //</span> Writing
+        <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-400 font-semibold flex items-center gap-2">
+          <span class="text-brand-accent">04 //</span> Architecture Insights & Writing
         </h2>
-        <div class="space-y-6">
+        <div class="grid grid-cols-1 gap-4">
           {sortedPosts.map((post) => (
-            <article class="group relative flex flex-col gap-1.5">
+            <article class="p-4 rounded-xl bg-zinc-900/30 border border-zinc-800/80 hover:border-brand-accent/40 hover:bg-zinc-900/50 transition-all duration-200 flex flex-col gap-2 group">
               <div class="flex justify-between items-baseline flex-wrap gap-2">
-                <h3 class="text-zinc-200 font-medium group-hover:text-white transition-colors duration-200 text-sm">
-                  <a href={`/blog/${post.id}/`} class="hover:underline underline-offset-4 decoration-brand-accent">
-                    {post.data.title}
+                <h3 class="text-zinc-100 font-medium group-hover:text-brand-accent transition-colors duration-200 text-sm">
+                  <a href={`/blog/${post.id}/`} class="inline-flex items-center gap-1.5">
+                    <span>{post.data.title}</span>
+                    <span class="text-xs group-hover:translate-x-0.5 transition-transform">&rarr;</span>
                   </a>
                 </h3>
                 <span class="text-[10px] font-mono text-zinc-500 whitespace-nowrap">
@@ -186,8 +270,9 @@ const projectsWithContent = await Promise.all(
               <p class="text-zinc-400 text-xs leading-relaxed max-w-xl">
                 {post.data.description}
               </p>
-              <div class="text-[10px] font-mono text-zinc-500">
-                {post.data.readingTime}
+              <div class="text-[10px] font-mono text-zinc-500 flex items-center gap-2">
+                <span class="text-brand-accent font-semibold">&#9679;</span>
+                <span>{post.data.readingTime}</span>
               </div>
             </article>
           ))}

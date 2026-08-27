@@ -4,11 +4,14 @@
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "Geist Mono", monospace;
   
-  /* Deep dark minimalist colors */
-  --color-bg-primary: #09090b; /* zinc-950 */
-  --color-bg-secondary: #18181b; /* zinc-900 */
-  --color-border-primary: #27272a; /* zinc-800 */
-  --color-brand-accent: #ad4d2b; /* Terracotta brand color */
+  /* Executive Dark Charcoal & Neon Orange Color System */
+  --color-bg-primary: #0b0f17; /* Deep midnight charcoal canvas */
+  --color-bg-secondary: #111827; /* Rich Charcoal surface */
+  --color-bg-card: #161f30; /* Elevated card background */
+  --color-border-primary: #1f2937; /* Charcoal border */
+  --color-border-muted: #182234;
+  --color-brand-accent: #ff9030; /* Neon Orange accent */
+  --color-brand-accent-hover: #ffaa5c;
 }
 
 @layer base {
@@ -23,11 +26,14 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background: radial-gradient(circle at 15% 10%, rgba(255, 144, 48, 0.035) 0%, transparent 40%),
+                radial-gradient(circle at 85% 60%, rgba(17, 24, 39, 0.8) 0%, transparent 60%),
+                var(--color-bg-primary);
   }
   
   ::selection {
-    background-color: rgba(173, 77, 43, 0.25); /* Subtle brand background */
-    color: var(--color-zinc-50);
+    background-color: rgba(255, 144, 48, 0.28); /* Neon Orange glow selection */
+    color: #ffffff;
   }
   
   /* Monochromatic thin lines & focus states */
@@ -46,12 +52,12 @@
   }
   
   ::-webkit-scrollbar-thumb {
-    background: var(--color-zinc-800);
+    background: #1f2937;
     border-radius: 3px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-zinc-700);
+    background: #374151;
   }
 }
 
