@@ -1,21 +1,40 @@
 ---
 import "../styles/global.css";
 import InteractiveCursor from "../components/InteractiveCursor.astro";
+import {
+  AUTHOR,
+  DEFAULT_OG_IMAGE,
+  SITE_URL,
+  personSchema,
+  serializeJsonLd,
+  type JsonLd,
+  type OgImage,
+} from "../lib/seo";
 
 interface Props {
   title?: string;
   description?: string;
+  type?: "website" | "article";
+  publishedTime?: Date;
+  image?: OgImage;
+  jsonLd?: JsonLd[];
+  noindex?: boolean;
 }
 
+const site = Astro.site ?? new URL(SITE_URL);
+
 const {
-  title = "Dimitrios P. Batsilis | Digital Product & Solutions Architect",
+  title = `${AUTHOR.name} | ${AUTHOR.jobTitle}`,
   description = "Digital Product & Solutions Architect specializing in scalable system design, modern full-stack platforms (.NET, Nuxt 3, Astro), and enterprise data ecosystems.",
+  type = "website",
+  publishedTime,
+  image = DEFAULT_OG_IMAGE,
+  jsonLd = [personSchema(site)],
+  noindex = false,
 } = Astro.props;
 
-const canonicalURL = new URL(
-  Astro.url.pathname,
-  Astro.site || "https://batsilis.gr",
-);
+const canonicalURL = new URL(Astro.url.pathname, site);
+const imageURL = new URL(image.src, site);
 ---
 
 <!doctype html>
@@ -27,25 +46,38 @@ const canonicalURL = new URL(
     <!-- SEO Meta Tags -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="author" content="Dimitrios P. Batsilis" />
-    <link rel="canonical" href={canonicalURL} />
-    <meta name="robots" content="index, follow" />
+    <meta name="author" content={AUTHOR.name} />
+    {!noindex && <link rel="canonical" href={canonicalURL} />}
+    <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
+    <!-- Open Graph -->
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={AUTHOR.name} />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/batsilis-logo.png" />
+    <meta property="og:image" content={imageURL} />
+    <meta property="og:image:width" content={String(image.width)} />
+    <meta property="og:image:height" content={String(image.height)} />
+    <meta property="og:image:alt" content={image.alt} />
+    {type === "article" && publishedTime && (
+      <meta property="article:published_time" content={publishedTime.toISOString()} />
+    )}
+    {type === "article" && <meta property="article:author" content={new URL("/", site).href} />}
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content="/batsilis-logo.png" />
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageURL} />
+    <meta name="twitter:image:alt" content={image.alt} />
+
+    <!-- Structured Data -->
+    {jsonLd.length > 0 && <script is:inline type="application/ld+json" set:html={serializeJsonLd(jsonLd)} />}
 
     <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- Fonts -->

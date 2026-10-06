@@ -96,3 +96,94 @@
   color: var(--color-zinc-200);
   font-weight: 500;
 }
+
+.prose-custom > :first-child {
+  margin-top: 0;
+}
+
+.prose-custom h2,
+.prose-custom h3,
+.prose-custom h4 {
+  color: var(--color-zinc-100);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-custom h2 {
+  font-size: 1.25rem;
+}
+
+.prose-custom h3 {
+  font-size: 1.0625rem;
+}
+
+.prose-custom h4 {
+  font-size: 0.9375rem;
+}
+
+.prose-custom ol {
+  list-style-type: decimal;
+  padding-left: 1.25rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose-custom ol li {
+  padding-left: 0.25rem;
+  margin-bottom: 0.375rem;
+}
+
+.prose-custom ol li::marker {
+  color: var(--color-brand-accent);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+
+.prose-custom a {
+  color: var(--color-brand-accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(255, 144, 48, 0.4);
+  transition: text-decoration-color 150ms ease;
+}
+
+.prose-custom a:hover {
+  text-decoration-color: var(--color-brand-accent);
+}
+
+.prose-custom :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--color-zinc-200);
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 0.25rem;
+  padding: 0.0625rem 0.3125rem;
+}
+
+.prose-custom pre {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+  margin-bottom: 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border-primary);
+  overflow-x: auto;
+}
+
+.prose-custom blockquote {
+  border-left: 2px solid var(--color-brand-accent);
+  padding-left: 1rem;
+  margin: 1.25rem 0;
+  color: var(--color-zinc-300);
+  font-style: italic;
+}
+
+.prose-custom hr {
+  margin: 2rem 0;
+}
