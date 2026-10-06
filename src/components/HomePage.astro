@@ -1,7 +1,15 @@
 ---
 import { render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import { AUTHOR } from '../lib/seo';
+import {
+  AUTHOR,
+  SITE_URL,
+  personSchema,
+  professionalServiceSchema,
+  profilePageSchema,
+  studioSchema,
+  websiteSchema,
+} from '../lib/seo';
 import { LOCALES, LOCALE_META, homePath, postPath, type Alternates, type Locale } from '../i18n/config';
 import { getLocalizedCollection, getPublishedPosts } from '../i18n/content';
 import { UI } from '../i18n/ui';
@@ -32,6 +40,25 @@ const sectionOrder = ['profile', 'services', 'ventures', 'experience', 'writing'
 const sections = sectionOrder.map((key, i) => ({ ...t.sections[key], number: String(i + 1).padStart(2, '0') }));
 const [profileSection, servicesSection, venturesSection, experienceSection, writingSection] = sections;
 
+// Structured data: who the person is, what they offer, and how the site relates to both
+const site = Astro.site ?? new URL(SITE_URL);
+const htmlLang = LOCALE_META[locale].htmlLang;
+const pageUrl = new URL(homePath(locale), site).href;
+const jsonLd = [
+  profilePageSchema(site, pageUrl, htmlLang),
+  personSchema(site, t.meta.description),
+  studioSchema(site),
+  websiteSchema(site, AUTHOR.name, LOCALES.map((l) => LOCALE_META[l].htmlLang)),
+  professionalServiceSchema(
+    site,
+    pageUrl,
+    htmlLang,
+    `${AUTHOR.name} — ${t.sections.services.heading}`,
+    t.meta.description,
+    t.services.filter((service) => !service.upcoming).map((service) => ({ name: service.title, description: service.body })),
+  ),
+];
+
 // Primary CTA: pre-filled email so inquiries arrive tagged by source
 const ctaHref = `mailto:${AUTHOR.email}?subject=${encodeURIComponent(t.cta.mailSubject)}`;
 
@@ -40,7 +67,7 @@ const tagClass = 'px-2 py-0.5 rounded bg-zinc-800/60 text-[10px] text-zinc-300 b
 const contactLabelClass = 'text-zinc-500 w-[4.5rem] shrink-0 text-[11px] uppercase';
 ---
 
-<Layout locale={locale} alternates={alternates}>
+<Layout locale={locale} alternates={alternates} jsonLd={jsonLd}>
   <div class="max-w-5xl mx-auto px-6 py-12 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20">
 
     <!-- Left Column: Identity & Coordinates (sticky on desktop when the viewport is tall enough to show it whole) -->

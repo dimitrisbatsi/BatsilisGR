@@ -1,8 +1,8 @@
 ---
 import { render, type CollectionEntry } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import { AUTHOR, DEFAULT_OG_IMAGE, SITE_URL, personSchema } from '../lib/seo';
-import { LOCALE_META, homePath, postPath, type Alternates, type Locale } from '../i18n/config';
+import { AUTHOR, DEFAULT_OG_IMAGE, SITE_URL, personSchema, studioSchema, websiteSchema } from '../lib/seo';
+import { LOCALES, LOCALE_META, homePath, postPath, type Alternates, type Locale } from '../i18n/config';
 import { getPostLocales } from '../i18n/content';
 import { UI } from '../i18n/ui';
 
@@ -35,6 +35,7 @@ const blogPosting = {
   inLanguage: LOCALE_META[locale].htmlLang,
   author: { '@id': author['@id'] },
   publisher: { '@id': author['@id'] },
+  isPartOf: { '@id': new URL('/#website', site).href },
 };
 
 const formattedDate = post.data.pubDate.toLocaleDateString(LOCALE_META[locale].dateLocale, {
@@ -51,7 +52,12 @@ const formattedDate = post.data.pubDate.toLocaleDateString(LOCALE_META[locale].d
   description={post.data.description}
   type="article"
   publishedTime={post.data.pubDate}
-  jsonLd={[blogPosting, author]}
+  jsonLd={[
+    blogPosting,
+    author,
+    studioSchema(site),
+    websiteSchema(site, AUTHOR.name, LOCALES.map((l) => LOCALE_META[l].htmlLang)),
+  ]}
 >
   <article class="max-w-2xl mx-auto px-6 py-12 md:py-24 space-y-8 font-sans">
 
