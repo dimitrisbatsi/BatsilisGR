@@ -32,9 +32,9 @@ const projectsWithContent = await Promise.all(
 <Layout>
   <div class="max-w-5xl mx-auto px-6 py-12 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20">
     
-    <!-- Left Column: Primary Identity, Philosophy & Coordinates (Sticky on desktop) -->
-    <header class="md:col-span-5 md:sticky md:top-24 md:self-start md:h-[calc(100dvh-14rem)] md:min-h-80 md:overflow-y-auto md:pr-2 [scrollbar-width:thin] flex flex-col justify-between gap-10">
-      <div class="space-y-8">
+    <!-- Left Column: Identity & Coordinates (sticky on desktop when the viewport is tall enough to show it whole) -->
+    <header class="md:col-span-5 md:self-start md:min-h-[calc(100dvh-14rem)] [@media(min-width:48rem)_and_(min-height:40rem)]:sticky [@media(min-width:48rem)_and_(min-height:40rem)]:top-24 flex flex-col justify-between gap-10">
+      <div class="flex flex-col gap-8">
         <!-- Identity -->
         <div class="space-y-4">
           <img src="/favicon.svg" alt="Dimitrios P. Batsilis Logo" class="w-12 h-12 select-none pointer-events-none" />
@@ -71,20 +71,46 @@ const projectsWithContent = await Promise.all(
           </div>
         </div>
 
-        <hr class="border-zinc-800/80" />
-
-        <!-- Narrative & Architectural Vision -->
-        <div class="space-y-4 text-sm text-zinc-400 leading-relaxed font-sans">
-          <p>
-            Digital Product & Solutions Architect bridging strategic business vision with resilient system architecture, modern full-stack engineering, and cloud scalability.
-          </p>
-          <p>
-            Specialized in architecting high-performance .NET backend platforms, reactive decoupled frontends (Vue.js, Nuxt 3, Astro), automated data pipelines, and AI-augmented applications.
-          </p>
-          <p>
-            Experienced in transforming complex enterprise domains into robust multi-tenant SaaS products, optimizing infrastructure deployments, and driving high-velocity engineering practices.
-          </p>
-        </div>
+        <!-- Section Index -->
+        <nav aria-label="Sections" class="hidden md:block">
+          <ul class="space-y-2 text-[11px] font-mono uppercase tracking-widest">
+            <li>
+              <a href="#profile" class="group inline-flex items-center gap-3 text-zinc-500 hover:text-zinc-100 transition-colors duration-200">
+                <span class="text-brand-accent/70 group-hover:text-brand-accent">01</span>
+                <span class="h-px w-6 bg-zinc-700 group-hover:w-10 group-hover:bg-brand-accent transition-all duration-200"></span>
+                <span>Profile & Approach</span>
+              </a>
+            </li>
+            <li>
+              <a href="#domains" class="group inline-flex items-center gap-3 text-zinc-500 hover:text-zinc-100 transition-colors duration-200">
+                <span class="text-brand-accent/70 group-hover:text-brand-accent">02</span>
+                <span class="h-px w-6 bg-zinc-700 group-hover:w-10 group-hover:bg-brand-accent transition-all duration-200"></span>
+                <span>Architectural Domains</span>
+              </a>
+            </li>
+            <li>
+              <a href="#ventures" class="group inline-flex items-center gap-3 text-zinc-500 hover:text-zinc-100 transition-colors duration-200">
+                <span class="text-brand-accent/70 group-hover:text-brand-accent">03</span>
+                <span class="h-px w-6 bg-zinc-700 group-hover:w-10 group-hover:bg-brand-accent transition-all duration-200"></span>
+                <span>Products & Ventures</span>
+              </a>
+            </li>
+            <li>
+              <a href="#experience" class="group inline-flex items-center gap-3 text-zinc-500 hover:text-zinc-100 transition-colors duration-200">
+                <span class="text-brand-accent/70 group-hover:text-brand-accent">04</span>
+                <span class="h-px w-6 bg-zinc-700 group-hover:w-10 group-hover:bg-brand-accent transition-all duration-200"></span>
+                <span>Experience</span>
+              </a>
+            </li>
+            <li>
+              <a href="#writing" class="group inline-flex items-center gap-3 text-zinc-500 hover:text-zinc-100 transition-colors duration-200">
+                <span class="text-brand-accent/70 group-hover:text-brand-accent">05</span>
+                <span class="h-px w-6 bg-zinc-700 group-hover:w-10 group-hover:bg-brand-accent transition-all duration-200"></span>
+                <span>Writing</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
 
       <!-- Meta Coordinates (Footer-like metrics at bottom of left panel) -->
@@ -97,13 +123,31 @@ const projectsWithContent = await Promise.all(
       </div>
     </header>
 
-    <!-- Right Column: Domains, Projects, Experience, and Writing -->
+    <!-- Right Column: Profile, Domains, Projects, Experience, and Writing -->
     <div class="md:col-span-7 space-y-16">
       
-      <!-- Core Architectural Domains Section -->
-      <section class="space-y-6">
+      <!-- Profile & Approach Section -->
+      <section id="profile" class="space-y-6 scroll-mt-24">
         <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-400 font-semibold flex items-center gap-2">
-          <span class="text-brand-accent">01 //</span> Architectural Domains & Core Stack
+          <span class="text-brand-accent">01 //</span> Profile & Approach
+        </h2>
+        <div class="space-y-4 text-sm text-zinc-400 leading-relaxed font-sans max-w-prose">
+          <p>
+            Digital Product & Solutions Architect bridging strategic business vision with resilient system architecture, modern full-stack engineering, and cloud scalability.
+          </p>
+          <p>
+            Specialized in architecting high-performance .NET backend platforms, reactive decoupled frontends (Vue.js, Nuxt 3, Astro), automated data pipelines, and AI-augmented applications.
+          </p>
+          <p>
+            Experienced in transforming complex enterprise domains into robust multi-tenant SaaS products, optimizing infrastructure deployments, and driving high-velocity engineering practices.
+          </p>
+        </div>
+      </section>
+
+      <!-- Core Architectural Domains Section -->
+      <section id="domains" class="space-y-6 scroll-mt-24">
+        <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-400 font-semibold flex items-center gap-2">
+          <span class="text-brand-accent">02 //</span> Architectural Domains & Core Stack
         </h2>
         <div class="grid grid-cols-1 gap-3.5 font-mono text-xs">
           <!-- Domain 1 -->
@@ -177,9 +221,9 @@ const projectsWithContent = await Promise.all(
       </section>
 
       <!-- Projects Section -->
-      <section class="space-y-6">
+      <section id="ventures" class="space-y-6 scroll-mt-24">
         <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-400 font-semibold flex items-center gap-2">
-          <span class="text-brand-accent">02 //</span> Digital Products & Independent Ventures
+          <span class="text-brand-accent">03 //</span> Digital Products & Independent Ventures
         </h2>
         <div class="space-y-6">
           {projectsWithContent.map(({ entry, Content }) => (
@@ -247,9 +291,9 @@ const projectsWithContent = await Promise.all(
       </section>
 
       <!-- Timeline/Experience Section -->
-      <section class="space-y-6">
+      <section id="experience" class="space-y-6 scroll-mt-24">
         <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-400 font-semibold flex items-center gap-2">
-          <span class="text-brand-accent">03 //</span> Professional Experience & Enterprise Solutions
+          <span class="text-brand-accent">04 //</span> Professional Experience & Enterprise Solutions
         </h2>
         <div class="space-y-8 border-l border-zinc-800/80 pl-5 ml-1">
           {experienceWithContent.map(({ entry, Content }) => (
@@ -275,9 +319,9 @@ const projectsWithContent = await Promise.all(
       </section>
 
       <!-- Blog/Writing Section -->
-      <section class="space-y-6">
+      <section id="writing" class="space-y-6 scroll-mt-24">
         <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-400 font-semibold flex items-center gap-2">
-          <span class="text-brand-accent">04 //</span> Architecture Insights & Writing
+          <span class="text-brand-accent">05 //</span> Architecture Insights & Writing
         </h2>
         <div class="grid grid-cols-1 gap-4">
           {sortedPosts.map((post) => (
