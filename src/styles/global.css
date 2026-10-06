@@ -2,7 +2,7 @@
 
 @theme {
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-mono: "Geist Mono", monospace;
+  --font-mono: "Geist Mono", "JetBrains Mono", monospace;
   
   /* Executive Dark Charcoal & Neon Orange Color System */
   --color-bg-primary: #0b0f17; /* Deep midnight charcoal canvas */

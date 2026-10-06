@@ -1,25 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { homePath } from '../i18n/config';
+
+// One static 404 serves every route, so it carries both languages.
+const linkClass =
+  'inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-brand-accent/10 hover:bg-brand-accent/20 border border-brand-accent/30 hover:border-brand-accent/60 text-brand-accent hover:text-white text-xs font-mono font-medium uppercase transition-all duration-200 group';
 ---
 
 <Layout
-  title="404 — Page Not Found | Dimitrios P. Batsilis"
-  description="The requested page does not exist."
+  locale="el"
+  title="404 — Η σελίδα δεν βρέθηκε | Page Not Found"
+  description="Η σελίδα που ζητήσατε δεν υπάρχει. The requested page does not exist."
   jsonLd={[]}
   noindex
 >
-  <section class="max-w-2xl mx-auto px-6 py-24 md:py-40 space-y-6 font-sans">
+  <section class="max-w-2xl mx-auto px-6 py-24 md:py-40 space-y-10 font-sans">
     <div class="text-xs font-mono text-brand-accent tracking-widest">ERROR 404 // ROUTE NOT RESOLVED</div>
-    <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-white">This page does not exist.</h1>
-    <p class="text-zinc-400 text-base leading-relaxed">
-      The link may be outdated or the address mistyped. Everything published lives on the portfolio index.
-    </p>
-    <a
-      href="/"
-      class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-brand-accent/10 hover:bg-brand-accent/20 border border-brand-accent/30 hover:border-brand-accent/60 text-brand-accent hover:text-white text-xs font-mono font-medium transition-all duration-200 group"
-    >
-      <span class="group-hover:-translate-x-1 transition-transform duration-200">&larr;</span>
-      BACK TO PORTFOLIO
-    </a>
+
+    <div class="space-y-6">
+      <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-white">Αυτή η σελίδα δεν υπάρχει.</h1>
+      <p class="text-zinc-400 text-base leading-relaxed">
+        Ο σύνδεσμος μπορεί να είναι παλιός ή η διεύθυνση να γράφτηκε λάθος. Όλο το περιεχόμενο είναι διαθέσιμο από την αρχική σελίδα.
+      </p>
+      <a href={homePath('el')} class={linkClass}>
+        <span class="group-hover:-translate-x-1 transition-transform duration-200">&larr;</span>
+        Πίσω στην αρχική
+      </a>
+    </div>
+
+    <div lang="en" class="space-y-4 pt-8 border-t border-zinc-800/80">
+      <p class="text-lg font-semibold text-zinc-200">This page does not exist.</p>
+      <p class="text-zinc-400 text-sm leading-relaxed">
+        The link may be outdated or the address mistyped. Everything published is available from the home page.
+      </p>
+      <a href={homePath('en')} class={linkClass}>
+        <span class="group-hover:-translate-x-1 transition-transform duration-200">&larr;</span>
+        Back to portfolio
+      </a>
+    </div>
   </section>
 </Layout>

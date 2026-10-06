@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import Analytics from "@vercel/analytics/astro";
+import LanguageSwitcher from "../components/LanguageSwitcher.astro";
 import {
   AUTHOR,
   DEFAULT_OG_IMAGE,
@@ -10,8 +11,13 @@ import {
   type JsonLd,
   type OgImage,
 } from "../lib/seo";
+import { DEFAULT_LOCALE, LOCALES, LOCALE_META, type Alternates, type Locale } from "../i18n/config";
+import { UI } from "../i18n/ui";
 
 interface Props {
+  locale: Locale;
+  /** Site-relative paths of this page in every language it exists in, including the current one. */
+  alternates?: Alternates;
   title?: string;
   description?: string;
   type?: "website" | "article";
@@ -23,22 +29,27 @@ interface Props {
 
 const site = Astro.site ?? new URL(SITE_URL);
 
-const {
-  title = `${AUTHOR.name} | ${AUTHOR.jobTitle}`,
-  description = "Digital Product & Solutions Architect specializing in scalable system design, modern full-stack platforms (.NET, Nuxt 3, Astro), and enterprise data ecosystems.",
-  type = "website",
-  publishedTime,
-  image = DEFAULT_OG_IMAGE,
-  jsonLd = [personSchema(site)],
-  noindex = false,
-} = Astro.props;
+const { locale, alternates = {}, type = "website", publishedTime, jsonLd = [personSchema(site)], noindex = false } =
+  Astro.props;
+const t = UI[locale];
+const meta = LOCALE_META[locale];
+const title = Astro.props.title ?? t.meta.title;
+const description = Astro.props.description ?? t.meta.description;
+const image = Astro.props.image ?? { ...DEFAULT_OG_IMAGE, alt: t.meta.ogImageAlt };
 
 const canonicalURL = new URL(Astro.url.pathname, site);
 const imageURL = new URL(image.src, site);
+
+const hreflangLinks = LOCALES.flatMap((l) => {
+  const path = alternates[l];
+  return path ? [{ hreflang: LOCALE_META[l].htmlLang, href: new URL(path, site).href }] : [];
+});
+const xDefault = alternates[DEFAULT_LOCALE];
+const otherOgLocales = LOCALES.filter((l) => l !== locale && alternates[l]).map((l) => LOCALE_META[l].ogLocale);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={meta.htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -50,10 +61,15 @@ const imageURL = new URL(image.src, site);
     {!noindex && <link rel="canonical" href={canonicalURL} />}
     <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
 
+    <!-- Language Alternates -->
+    {!noindex && hreflangLinks.map((link) => <link rel="alternate" hreflang={link.hreflang} href={link.href} />)}
+    {!noindex && xDefault && <link rel="alternate" hreflang="x-default" href={new URL(xDefault, site).href} />}
+
     <!-- Open Graph -->
     <meta property="og:type" content={type} />
     <meta property="og:site_name" content={AUTHOR.name} />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={meta.ogLocale} />
+    {otherOgLocales.map((ogLocale) => <meta property="og:locale:alternate" content={ogLocale} />)}
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -80,19 +96,21 @@ const imageURL = new URL(image.src, site);
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Fonts -->
+    <!-- Fonts: JetBrains Mono supplies the Greek glyphs that Geist Mono lacks -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Geist+Mono:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Geist+Mono:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
   <body
-    class="bg-bg-primary text-zinc-300 selection:bg-zinc-800 selection:text-zinc-50 min-h-screen antialiased flex flex-col justify-between"
+    class="relative bg-bg-primary text-zinc-300 selection:bg-zinc-800 selection:text-zinc-50 min-h-screen antialiased flex flex-col justify-between"
   >
     <!-- Thin structural border at the top of the viewport with brand glow -->
     <div class="h-1 bg-brand-accent w-full shadow-[0_1px_12px_rgba(255,144,48,0.4)]"></div>
+
+    <LanguageSwitcher locale={locale} alternates={alternates} />
 
     <main class="flex-grow">
       <slot />
@@ -103,12 +121,12 @@ const imageURL = new URL(image.src, site);
       class="border-t border-border-primary py-8 text-center text-xs font-mono text-zinc-500 max-w-5xl mx-auto w-full px-6 flex flex-col md:flex-row justify-between items-center gap-4"
     >
       <div>
-        &copy; {new Date().getFullYear()} Dimitrios P. Batsilis. All rights reserved.
+        &copy; {new Date().getFullYear()} {AUTHOR.name}. {t.footer.rights}
       </div>
       <div class="flex gap-4">
-        <span>Thessaloniki, Greece</span>
+        <span>{t.footer.location}</span>
         <span class="text-zinc-700">|</span>
-        <span>Built with Astro & Tailwind v4</span>
+        <span>{t.footer.builtWith}</span>
       </div>
     </footer>
 

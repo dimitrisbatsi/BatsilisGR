@@ -1,0 +1,13 @@
+---
+import BlogPost from '../../../components/BlogPost.astro';
+import { getPublishedPosts } from '../../../i18n/content';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts('en');
+  return posts.map(({ entry, slug }) => ({ params: { slug }, props: { post: entry, slug } }));
+}
+
+const { post, slug } = Astro.props;
+---
+
+<BlogPost locale="en" slug={slug} post={post} />

@@ -1,0 +1,296 @@
+---
+import { render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import { AUTHOR } from '../lib/seo';
+import { LOCALES, LOCALE_META, homePath, postPath, type Alternates, type Locale } from '../i18n/config';
+import { getLocalizedCollection, getPublishedPosts } from '../i18n/content';
+import { UI } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = UI[locale];
+const dateLocale = LOCALE_META[locale].dateLocale;
+const alternates: Alternates = Object.fromEntries(LOCALES.map((l) => [l, homePath(l)]));
+
+const byOrder = <T extends { entry: { data: { order: number } } }>(a: T, b: T) => a.entry.data.order - b.entry.data.order;
+
+const experience = (await getLocalizedCollection('experience', locale)).sort(byOrder);
+const projects = (await getLocalizedCollection('projects', locale)).sort(byOrder);
+const posts = await getPublishedPosts(locale);
+
+const experienceWithContent = await Promise.all(
+  experience.map(async ({ entry }) => ({ entry, Content: (await render(entry)).Content })),
+);
+const projectsWithContent = await Promise.all(
+  projects.map(async ({ entry }) => ({ entry, Content: (await render(entry)).Content })),
+);
+
+const sectionOrder = ['profile', 'services', 'ventures', 'experience', 'writing'] as const;
+const sections = sectionOrder.map((key, i) => ({ ...t.sections[key], number: String(i + 1).padStart(2, '0') }));
+const [profileSection, servicesSection, venturesSection, experienceSection, writingSection] = sections;
+
+// Primary CTA: pre-filled email so inquiries arrive tagged by source
+const ctaHref = `mailto:${AUTHOR.email}?subject=${encodeURIComponent(t.cta.mailSubject)}`;
+
+const headingClass = 'text-xs uppercase font-mono tracking-widest text-zinc-400 font-semibold flex items-center gap-2';
+const tagClass = 'px-2 py-0.5 rounded bg-zinc-800/60 text-[10px] text-zinc-300 border border-zinc-700/50';
+const contactLabelClass = 'text-zinc-500 w-[4.5rem] shrink-0 text-[11px] uppercase';
+---
+
+<Layout locale={locale} alternates={alternates}>
+  <div class="max-w-5xl mx-auto px-6 py-12 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20">
+
+    <!-- Left Column: Identity & Coordinates (sticky on desktop when the viewport is tall enough to show it whole) -->
+    <header class="md:col-span-5 md:self-start md:min-h-[calc(100dvh-14rem)] [@media(min-width:48rem)_and_(min-height:44rem)]:sticky [@media(min-width:48rem)_and_(min-height:44rem)]:top-24 flex flex-col justify-between gap-10">
+      <div class="flex flex-col gap-8">
+        <!-- Identity -->
+        <div class="space-y-4">
+          <img src="/favicon.svg" alt={`${AUTHOR.name} Logo`} class="w-12 h-12 select-none pointer-events-none" />
+          <div class="space-y-2">
+            <h1 class="text-3xl font-bold tracking-tight text-white">{AUTHOR.name}</h1>
+            <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-zinc-900/90 border border-zinc-800 text-xs font-mono text-brand-accent shadow-sm">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse"></span>
+              <span>{t.roleBadge}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coordinates & Presence -->
+        <div class="space-y-2.5 text-xs font-mono text-zinc-400">
+          <div class="flex items-center gap-2">
+            <span class={contactLabelClass}>{t.contact.email}</span>
+            <a href={`mailto:${AUTHOR.email}`} class="text-zinc-300 hover:text-brand-accent hover:underline underline-offset-4 transition-colors">{AUTHOR.email}</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class={contactLabelClass}>{t.contact.phone}</span>
+            <a href="tel:+306947246710" class="text-zinc-300 hover:text-brand-accent hover:underline underline-offset-4 transition-colors">(0030) 6947246710</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class={contactLabelClass}>{t.contact.location}</span>
+            <span class="text-zinc-300">{t.contact.locationValue}</span>
+          </div>
+          <div class="flex items-center gap-2 pt-1">
+            <span class={contactLabelClass}>{t.contact.links}</span>
+            <div class="flex items-center gap-3 text-zinc-300">
+              <a href="https://github.com/dimitrisbatsi" target="_blank" rel="noreferrer" class="hover:text-brand-accent transition-colors">GitHub &rarr;</a>
+              <span class="text-zinc-700">&middot;</span>
+              <a href="https://www.chilistudio.gr/" target="_blank" rel="noreferrer" class="hover:text-brand-accent transition-colors">Chili Studio &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section Index -->
+        <nav aria-label={t.nav.sections} class="hidden md:block">
+          <ul class="space-y-2 text-[11px] font-mono uppercase tracking-widest">
+            {sections.map((section) => (
+              <li>
+                <a href={`#${section.id}`} class="group inline-flex items-center gap-3 text-zinc-500 hover:text-zinc-100 transition-colors duration-200">
+                  <span class="text-brand-accent/70 group-hover:text-brand-accent">{section.number}</span>
+                  <span class="h-px w-6 bg-zinc-700 group-hover:w-10 group-hover:bg-brand-accent transition-all duration-200"></span>
+                  <span>{section.navLabel}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Availability & Primary CTA (anchored to the bottom of the left panel on desktop) -->
+      <div class="flex flex-col items-start gap-4">
+        <div class="space-y-2 text-[10px] font-mono text-zinc-500 tracking-wider uppercase">
+          <div class="flex items-center gap-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-brand-accent animate-pulse shadow-[0_0_8px_rgba(255,144,48,0.8)]"></span>
+            <span class="text-zinc-400">{t.status}</span>
+          </div>
+          <div>{t.timezone}</div>
+        </div>
+        <a
+          href={ctaHref}
+          class="group inline-flex items-center gap-2 px-4 py-2 rounded-md bg-brand-accent text-bg-primary text-xs font-mono font-semibold tracking-wide hover:bg-brand-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent transition-colors duration-200"
+        >
+          <span>{t.cta.label}</span>
+          <span class="group-hover:translate-x-0.5 transition-transform duration-200">&rarr;</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Right Column: Profile, Services, Products, Experience, and Writing -->
+    <div class="md:col-span-7 space-y-16">
+
+      <!-- Profile & Approach Section -->
+      <section id={profileSection.id} class="space-y-6 scroll-mt-24">
+        <h2 class={headingClass}>
+          <span class="text-brand-accent shrink-0 whitespace-nowrap">{profileSection.number} //</span> {profileSection.heading}
+        </h2>
+        <div class="space-y-4 text-sm text-zinc-400 leading-relaxed font-sans max-w-prose">
+          {t.profile.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section id={servicesSection.id} class="space-y-6 scroll-mt-24">
+        <h2 class={headingClass}>
+          <span class="text-brand-accent shrink-0 whitespace-nowrap">{servicesSection.number} //</span> {servicesSection.heading}
+        </h2>
+        <div class="grid grid-cols-1 gap-3.5 font-mono text-xs">
+          {t.services.map((service) => (
+            <div
+              class:list={[
+                'p-4 rounded-xl border transition-all duration-200 space-y-2.5',
+                service.upcoming
+                  ? 'bg-zinc-900/20 border-dashed border-zinc-800 hover:border-brand-accent/30'
+                  : 'bg-zinc-900/40 border-zinc-800/80 hover:border-brand-accent/40',
+              ]}
+            >
+              <div class="flex items-center justify-between gap-3">
+                <h3 class="text-brand-accent uppercase tracking-wider font-semibold">{service.title}</h3>
+                <span class:list={['text-[10px] uppercase shrink-0', service.upcoming ? 'text-brand-accent/80' : 'text-zinc-500']}>
+                  {service.label}
+                </span>
+              </div>
+              <p class="text-zinc-300 font-sans text-xs leading-relaxed">{service.body}</p>
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                {service.tags.map((tag) => <span class={tagClass}>{tag}</span>)}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id={venturesSection.id} class="space-y-6 scroll-mt-24">
+        <h2 class={headingClass}>
+          <span class="text-brand-accent shrink-0 whitespace-nowrap">{venturesSection.number} //</span> {venturesSection.heading}
+        </h2>
+        <div class="space-y-6">
+          {projectsWithContent.map(({ entry, Content }) => (
+            <article class="p-6 rounded-xl bg-zinc-900/30 border border-zinc-800/80 hover:border-brand-accent/40 hover:bg-zinc-900/50 transition-all duration-200 flex flex-col gap-3.5 group">
+              <div class="flex justify-between items-baseline flex-wrap gap-2">
+                <div class="flex items-center flex-wrap gap-x-2.5 gap-y-1.5">
+                  <h3 class="text-white font-semibold text-lg transition-colors">
+                    {entry.data.link ? (
+                      <a
+                        href={entry.data.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        class="hover:text-brand-accent transition-colors inline-flex items-center gap-1.5"
+                      >
+                        <span>{entry.data.title}</span>
+                        <span class="text-xs text-zinc-500 group-hover:text-brand-accent group-hover:translate-x-0.5 transition-all">&rarr;</span>
+                      </a>
+                    ) : (
+                      <span>{entry.data.title}</span>
+                    )}
+                  </h3>
+                  {entry.data.badge && (
+                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-brand-accent/15 text-brand-accent border border-brand-accent/30 font-medium">
+                      {entry.data.badge}
+                    </span>
+                  )}
+                </div>
+                <span class="text-[11px] font-mono text-zinc-500 whitespace-nowrap">{entry.data.period}</span>
+              </div>
+
+              <div class="text-[11px] font-mono text-brand-accent font-medium">
+                {entry.data.role}
+              </div>
+
+              <div class="text-zinc-300 text-sm leading-relaxed prose-custom">
+                <Content />
+              </div>
+
+              <div class="flex items-center justify-between flex-wrap gap-3 pt-3 border-t border-zinc-800/60">
+                {entry.data.tags && entry.data.tags.length > 0 ? (
+                  <div class="flex flex-wrap gap-1.5">
+                    {entry.data.tags.map((tag) => (
+                      <span class="px-2 py-0.5 rounded bg-zinc-800/50 text-[10px] font-mono text-zinc-400 border border-zinc-700/40">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                ) : <div></div>}
+
+                {entry.data.link && (
+                  <a
+                    href={entry.data.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-brand-accent/10 hover:bg-brand-accent/20 border border-brand-accent/30 hover:border-brand-accent/60 text-brand-accent hover:text-white text-xs font-mono font-medium transition-all duration-200 shadow-sm"
+                  >
+                    <span>{t.visitWebsite}</span>
+                    <span class="text-xs">&rarr;</span>
+                  </a>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- Timeline/Experience Section -->
+      <section id={experienceSection.id} class="space-y-6 scroll-mt-24">
+        <h2 class={headingClass}>
+          <span class="text-brand-accent shrink-0 whitespace-nowrap">{experienceSection.number} //</span> {experienceSection.heading}
+        </h2>
+        <div class="space-y-8 border-l border-zinc-800/80 pl-5 ml-1">
+          {experienceWithContent.map(({ entry, Content }) => (
+            <div class="relative group">
+              <!-- Timeline node dot -->
+              <div class="absolute -left-[25px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-900 border border-zinc-700 group-hover:bg-brand-accent group-hover:border-brand-accent group-hover:shadow-[0_0_8px_rgba(255,144,48,0.7)] transition-all duration-200"></div>
+
+              <div class="flex flex-col gap-1.5">
+                <div class="flex justify-between items-baseline flex-wrap gap-2">
+                  <h3 class="text-zinc-100 font-medium text-base group-hover:text-white transition-colors duration-200">
+                    {entry.data.role}
+                  </h3>
+                  <span class="text-[11px] font-mono text-zinc-500 whitespace-nowrap">{entry.data.startDate} &mdash; {entry.data.endDate}</span>
+                </div>
+                <div class="text-[11px] font-mono text-zinc-400">
+                  {entry.data.company}{entry.data.location && <> &middot; {entry.data.location}</>}
+                </div>
+                <div class="text-zinc-400 text-sm mt-1 leading-relaxed prose-custom">
+                  <Content />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Blog/Writing Section -->
+      <section id={writingSection.id} class="space-y-6 scroll-mt-24">
+        <h2 class={headingClass}>
+          <span class="text-brand-accent shrink-0 whitespace-nowrap">{writingSection.number} //</span> {writingSection.heading}
+        </h2>
+        <div class="grid grid-cols-1 gap-4">
+          {posts.map(({ entry: post, slug }) => (
+            <article class="p-4 rounded-xl bg-zinc-900/30 border border-zinc-800/80 hover:border-brand-accent/40 hover:bg-zinc-900/50 transition-all duration-200 flex flex-col gap-2 group">
+              <div class="flex justify-between items-baseline flex-wrap gap-2">
+                <h3 class="text-zinc-100 font-medium group-hover:text-brand-accent transition-colors duration-200 text-sm">
+                  <a href={postPath(locale, slug)} class="inline-flex items-center gap-1.5">
+                    <span>{post.data.title}</span>
+                    <span class="text-xs group-hover:translate-x-0.5 transition-transform">&rarr;</span>
+                  </a>
+                </h3>
+                <span class="text-[10px] font-mono text-zinc-500 whitespace-nowrap">
+                  {post.data.pubDate.toLocaleDateString(dateLocale, { year: 'numeric', month: 'short' })}
+                </span>
+              </div>
+              <p class="text-zinc-400 text-xs leading-relaxed max-w-xl">
+                {post.data.description}
+              </p>
+              <div class="text-[10px] font-mono text-zinc-500 flex items-center gap-2">
+                <span class="text-brand-accent font-semibold">&#9679;</span>
+                <span>{post.data.readingTime}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+    </div>
+  </div>
+</Layout>
