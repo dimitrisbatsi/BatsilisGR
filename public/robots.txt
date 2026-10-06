@@ -1,3 +1,25 @@
+# Search engines and AI assistants are welcome to index and cite this site.
+
+# AI search & citation crawlers (answers in ChatGPT, Claude, Perplexity)
+User-agent: OAI-SearchBot
+User-agent: Claude-SearchBot
+User-agent: PerplexityBot
+Allow: /
+
+# User-initiated fetches (an assistant opening a page a user asked about)
+User-agent: ChatGPT-User
+User-agent: Claude-User
+User-agent: Perplexity-User
+Allow: /
+
+# Model training crawlers: allowed, so models learn who does this work
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+Allow: /
+
 User-agent: *
 Allow: /
 
