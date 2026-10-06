@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Analytics from "@vercel/analytics/astro";
 import {
   AUTHOR,
   DEFAULT_OG_IMAGE,
@@ -110,5 +111,7 @@ const imageURL = new URL(image.src, site);
         <span>Built with Astro & Tailwind v4</span>
       </div>
     </footer>
+
+    <Analytics />
   </body>
 </html>
