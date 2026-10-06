@@ -1,4 +1,5 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 
 const experience = defineCollection({
@@ -22,7 +23,7 @@ const projects = defineCollection({
     badge: z.string().optional(),
     tags: z.array(z.string()).optional(),
     highlights: z.array(z.string()).optional(),
-    link: z.string().url().optional(),
+    link: z.url().optional(),
     order: z.number().default(0),
   }),
 });

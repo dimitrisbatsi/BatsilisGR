@@ -1,10 +1,11 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import { DEFAULT_OG_IMAGE, SITE_URL, personSchema } from '../../lib/seo';
 
 // Generate paths for all static blog pages during build
 export async function getStaticPaths() {
-  const posts = await getCollection('posts');
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
   return posts.map((post) => ({
     params: { id: post.id },
     props: { post },
@@ -14,6 +15,23 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
+const site = Astro.site ?? new URL(SITE_URL);
+const postURL = new URL(Astro.url.pathname, site).href;
+const author = personSchema(site);
+const blogPosting = {
+  '@type': 'BlogPosting',
+  '@id': `${postURL}#article`,
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  url: postURL,
+  mainEntityOfPage: postURL,
+  image: new URL(DEFAULT_OG_IMAGE.src, site).href,
+  inLanguage: 'en',
+  author: { '@id': author['@id'] },
+  publisher: { '@id': author['@id'] },
+};
+
 const formattedDate = new Date(post.data.pubDate).toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
@@ -21,9 +39,12 @@ const formattedDate = new Date(post.data.pubDate).toLocaleDateString('en-US', {
 });
 ---
 
-<Layout 
-  title={`${post.data.title} | Dimitrios P. Batsilis`} 
+<Layout
+  title={`${post.data.title} | Dimitrios P. Batsilis`}
   description={post.data.description}
+  type="article"
+  publishedTime={post.data.pubDate}
+  jsonLd={[blogPosting, author]}
 >
   <article class="max-w-2xl mx-auto px-6 py-12 md:py-24 space-y-8 font-sans">
     

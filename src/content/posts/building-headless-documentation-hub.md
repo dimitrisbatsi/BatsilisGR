@@ -34,3 +34,6 @@ query GetDocumentationDocs {
     }
   }
 }
+```
+
+Because Astro resolves this query at build time, the GraphQL endpoint and the WordPress admin never face the public internet. The deployed site is plain static HTML on a CDN: no database round-trips per request, no PHP attack surface, and content updates ship through a rebuild webhook triggered on publish.

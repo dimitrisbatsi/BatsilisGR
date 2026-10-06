@@ -25,7 +25,7 @@
     let rafId: number | null = null;
 
     // Smooth cursor follower animation
-    function updateCursorPosition() {
+    const updateCursorPosition = () => {
       // Linear interpolation for smooth trailing
       currentX += (mouseX - currentX) * 0.35;
       currentY += (mouseY - currentY) * 0.35;
@@ -33,7 +33,7 @@
       badge.style.transform = `translate3d(${currentX + 14}px, ${currentY - 14}px, 0)`;
 
       rafId = requestAnimationFrame(updateCursorPosition);
-    }
+    };
 
     document.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
@@ -77,7 +77,7 @@
       createCrack(clickX, clickY);
     });
 
-    function createCrack(x: number, y: number) {
+    const createCrack = (x: number, y: number) => {
       const crack = document.createElement('div');
       crack.className = 'absolute pointer-events-none will-change-transform';
       crack.style.left = `${x}px`;
@@ -140,7 +140,7 @@
       setTimeout(() => {
         crack.remove();
       }, 3000);
-    }
+    };
   }
 
   // Initialize on page load and support view transitions / hot-reloads
