@@ -1,0 +1,40 @@
+---
+import { LOCALES, LOCALE_META, type Alternates, type Locale } from '../i18n/config';
+import { UI } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+  alternates: Alternates;
+}
+
+const { locale, alternates } = Astro.props;
+const available = LOCALES.filter((l) => alternates[l]);
+---
+
+{available.length > 1 && (
+  <nav
+    aria-label={UI[locale].nav.language}
+    class="absolute top-4 right-4 md:top-6 md:right-8 z-20 flex items-center gap-1 text-[11px] font-mono tracking-widest"
+  >
+    {available.map((l, i) => (
+      <>
+        {i > 0 && <span class="text-zinc-700" aria-hidden="true">/</span>}
+        {l === locale ? (
+          <span aria-current="true" lang={LOCALE_META[l].htmlLang} title={LOCALE_META[l].name} class="px-1.5 py-0.5 text-brand-accent">
+            {LOCALE_META[l].label}
+          </span>
+        ) : (
+          <a
+            href={alternates[l]}
+            hreflang={LOCALE_META[l].htmlLang}
+            lang={LOCALE_META[l].htmlLang}
+            title={LOCALE_META[l].name}
+            class="px-1.5 py-0.5 text-zinc-500 hover:text-zinc-100 transition-colors duration-200"
+          >
+            {LOCALE_META[l].label}
+          </a>
+        )}
+      </>
+    ))}
+  </nav>
+)}

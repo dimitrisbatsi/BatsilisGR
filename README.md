@@ -28,23 +28,43 @@ Inspired by **Maria** and **Tone** minimalist Astro themes:
 ```text
 BatsilisGR/
 ├── src/
-│   ├── content/             # Type-safe portfolio data
-│   │   ├── experience/      # Professional timeline (.md)
-│   │   ├── projects/        # Independent projects & SaaS (.md)
-│   │   └── posts/           # Blog articles (.md)
+│   ├── components/
+│   │   ├── HomePage.astro         # Portfolio page, rendered per locale
+│   │   ├── BlogPost.astro         # Article page, rendered per locale
+│   │   └── LanguageSwitcher.astro # ΕΛ / EN toggle driven by page alternates
+│   ├── content/                   # Type-safe content, one folder per locale
+│   │   ├── experience/{el,en}/    # Professional timeline (.md)
+│   │   ├── projects/{el,en}/      # Products & ventures (.md)
+│   │   └── posts/{el,en}/         # Articles; same filename = translation pair
+│   ├── i18n/
+│   │   ├── config.ts              # Locales, route helpers, locale metadata
+│   │   ├── content.ts             # Locale-aware collection queries
+│   │   └── ui.ts                  # UI strings and services copy per locale
 │   ├── layouts/
-│   │   └── Layout.astro     # Core page HTML shell and SEO meta tags
+│   │   └── Layout.astro           # HTML shell, SEO, hreflang, Open Graph
+│   ├── lib/
+│   │   └── seo.ts                 # Author identity and JSON-LD helpers
 │   ├── pages/
-│   │   ├── blog/
-│   │   │   └── [id].astro   # Dynamic blog article page rendering
-│   │   └── index.astro      # Main landing layout & content queries
+│   │   ├── index.astro            # Greek home (default locale)
+│   │   ├── arthra/[slug].astro    # Greek articles
+│   │   ├── en/index.astro         # English home
+│   │   ├── en/blog/[slug].astro   # English articles
+│   │   └── 404.astro              # Bilingual not-found page
 │   ├── styles/
-│   │   └── global.css       # Tailwind v4 directives & theme configurations
-│   └── content.config.ts    # Astro v6 Content Layer definitions
-├── public/                  # Favicons and static asset assets
-├── astro.config.mjs         # Astro & Tailwind plugin settings
-└── package.json             # Project scripts and dependencies
+│   │   └── global.css             # Tailwind v4 directives & theme configurations
+│   └── content.config.ts          # Astro Content Layer definitions
+├── public/                        # Favicons, OG image and static assets
+├── vercel.json                    # 301: legacy /blog/* -> /en/blog/*
+├── astro.config.mjs               # Astro & Tailwind plugin settings
+└── package.json                   # Project scripts and dependencies
 ```
+
+### Localisation
+
+- Greek is served at `/`, English under `/en/`.
+- Greek articles live under `/arthra/`. This keeps `/blog/*` free for the permanent redirect of the original English URLs.
+- To add a translated article, create the same filename under `posts/el/` and `posts/en/`. The language switcher and the `hreflang` links pair them automatically.
+- An article that exists in only one language renders without a language switcher.
 
 ---
 
@@ -72,7 +92,12 @@ Make sure you have **Node.js** (version 22.12.0 or higher) installed on your sys
    ```
    Open [http://localhost:4321/](http://localhost:4321/) in your browser to view the site.
 
-4. **Build for production**:
+4. **Type-check**:
+   ```bash
+   npm run check
+   ```
+
+5. **Build for production**:
    ```bash
    npm run build
    ```
