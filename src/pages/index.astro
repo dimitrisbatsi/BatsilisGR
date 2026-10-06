@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import { AUTHOR } from '../lib/seo';
 
 // Query and sort Content Collections
 const experienceEntries = await getCollection('experience');
@@ -27,13 +28,16 @@ const projectsWithContent = await Promise.all(
     return { entry, Content };
   })
 );
+
+// Primary CTA: pre-filled email so inquiries arrive tagged by source
+const ctaHref = `mailto:${AUTHOR.email}?subject=${encodeURIComponent('Project inquiry via batsilis.gr')}`;
 ---
 
 <Layout>
   <div class="max-w-5xl mx-auto px-6 py-12 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20">
     
     <!-- Left Column: Identity & Coordinates (sticky on desktop when the viewport is tall enough to show it whole) -->
-    <header class="md:col-span-5 md:self-start md:min-h-[calc(100dvh-14rem)] [@media(min-width:48rem)_and_(min-height:40rem)]:sticky [@media(min-width:48rem)_and_(min-height:40rem)]:top-24 flex flex-col justify-between gap-10">
+    <header class="md:col-span-5 md:self-start md:min-h-[calc(100dvh-14rem)] [@media(min-width:48rem)_and_(min-height:44rem)]:sticky [@media(min-width:48rem)_and_(min-height:44rem)]:top-24 flex flex-col justify-between gap-10">
       <div class="flex flex-col gap-8">
         <!-- Identity -->
         <div class="space-y-4">
@@ -113,13 +117,22 @@ const projectsWithContent = await Promise.all(
         </nav>
       </div>
 
-      <!-- Meta Coordinates (Footer-like metrics at bottom of left panel) -->
-      <div class="hidden md:block space-y-2 text-[10px] font-mono text-zinc-500 tracking-wider uppercase">
-        <div class="flex items-center gap-2">
-          <span class="inline-block w-2 h-2 rounded-full bg-brand-accent animate-pulse shadow-[0_0_8px_rgba(255,144,48,0.8)]"></span>
-          <span class="text-zinc-400">Status: Available for Consulting & Architecture</span>
+      <!-- Availability & Primary CTA (anchored to the bottom of the left panel on desktop) -->
+      <div class="flex flex-col items-start gap-4">
+        <div class="space-y-2 text-[10px] font-mono text-zinc-500 tracking-wider uppercase">
+          <div class="flex items-center gap-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-brand-accent animate-pulse shadow-[0_0_8px_rgba(255,144,48,0.8)]"></span>
+            <span class="text-zinc-400">Status: Available for Consulting & Architecture</span>
+          </div>
+          <div>TZ: EET (UTC+2 / UTC+3)</div>
         </div>
-        <div>TZ: EET (UTC+2 / UTC+3)</div>
+        <a
+          href={ctaHref}
+          class="group inline-flex items-center gap-2 px-4 py-2 rounded-md bg-brand-accent text-bg-primary text-xs font-mono font-semibold tracking-wide hover:bg-brand-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent transition-colors duration-200"
+        >
+          <span>Discuss a Project</span>
+          <span class="group-hover:translate-x-0.5 transition-transform duration-200">&rarr;</span>
+        </a>
       </div>
     </header>
 
@@ -129,7 +142,7 @@ const projectsWithContent = await Promise.all(
       <!-- Profile & Approach Section -->
       <section id="profile" class="space-y-6 scroll-mt-24">
         <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-400 font-semibold flex items-center gap-2">
-          <span class="text-brand-accent">01 //</span> Profile & Approach
+          <span class="text-brand-accent shrink-0 whitespace-nowrap">01 //</span> Profile & Approach
         </h2>
         <div class="space-y-4 text-sm text-zinc-400 leading-relaxed font-sans max-w-prose">
           <p>
@@ -147,7 +160,7 @@ const projectsWithContent = await Promise.all(
       <!-- Core Architectural Domains Section -->
       <section id="domains" class="space-y-6 scroll-mt-24">
         <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-400 font-semibold flex items-center gap-2">
-          <span class="text-brand-accent">02 //</span> Architectural Domains & Core Stack
+          <span class="text-brand-accent shrink-0 whitespace-nowrap">02 //</span> Architectural Domains & Core Stack
         </h2>
         <div class="grid grid-cols-1 gap-3.5 font-mono text-xs">
           <!-- Domain 1 -->
@@ -223,13 +236,13 @@ const projectsWithContent = await Promise.all(
       <!-- Projects Section -->
       <section id="ventures" class="space-y-6 scroll-mt-24">
         <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-400 font-semibold flex items-center gap-2">
-          <span class="text-brand-accent">03 //</span> Digital Products & Independent Ventures
+          <span class="text-brand-accent shrink-0 whitespace-nowrap">03 //</span> Digital Products & Independent Ventures
         </h2>
         <div class="space-y-6">
           {projectsWithContent.map(({ entry, Content }) => (
             <article class="p-6 rounded-xl bg-zinc-900/30 border border-zinc-800/80 hover:border-brand-accent/40 hover:bg-zinc-900/50 transition-all duration-200 flex flex-col gap-3.5 group">
               <div class="flex justify-between items-baseline flex-wrap gap-2">
-                <div class="flex items-center gap-2.5">
+                <div class="flex items-center flex-wrap gap-x-2.5 gap-y-1.5">
                   <h3 class="text-white font-semibold text-lg transition-colors">
                     {entry.data.link ? (
                       <a 
@@ -293,7 +306,7 @@ const projectsWithContent = await Promise.all(
       <!-- Timeline/Experience Section -->
       <section id="experience" class="space-y-6 scroll-mt-24">
         <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-400 font-semibold flex items-center gap-2">
-          <span class="text-brand-accent">04 //</span> Professional Experience & Enterprise Solutions
+          <span class="text-brand-accent shrink-0 whitespace-nowrap">04 //</span> Professional Experience & Enterprise Solutions
         </h2>
         <div class="space-y-8 border-l border-zinc-800/80 pl-5 ml-1">
           {experienceWithContent.map(({ entry, Content }) => (
@@ -321,7 +334,7 @@ const projectsWithContent = await Promise.all(
       <!-- Blog/Writing Section -->
       <section id="writing" class="space-y-6 scroll-mt-24">
         <h2 class="text-xs uppercase font-mono tracking-widest text-zinc-400 font-semibold flex items-center gap-2">
-          <span class="text-brand-accent">05 //</span> Architecture Insights & Writing
+          <span class="text-brand-accent shrink-0 whitespace-nowrap">05 //</span> Architecture Insights & Writing
         </h2>
         <div class="grid grid-cols-1 gap-4">
           {sortedPosts.map((post) => (
