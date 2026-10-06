@@ -8,7 +8,7 @@ export const AUTHOR = {
   locality: 'Thessaloniki',
   country: 'GR',
   /** Profiles of this same person on other platforms. */
-  sameAs: ['https://github.com/dimitrisbatsi'],
+  sameAs: ['https://www.linkedin.com/in/dbatsilis/', 'https://github.com/dimitrisbatsi'],
   knowsAbout: [
     'Business process digitalisation',
     'Workflow automation',
