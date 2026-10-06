@@ -32,6 +32,8 @@ const posts = defineCollection({
   loader: glob({ base: './src/content/posts', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     title: z.string(),
+    /** Shorter <title> for search results when the headline exceeds MAX_TITLE_LENGTH. */
+    seoTitle: z.string().optional(),
     description: z.string(),
     pubDate: z.coerce.date(),
     readingTime: z.string(),

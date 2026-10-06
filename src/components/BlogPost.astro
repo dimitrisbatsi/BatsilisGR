@@ -1,7 +1,7 @@
 ---
 import { render, type CollectionEntry } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import { AUTHOR, DEFAULT_OG_IMAGE, SITE_URL, personSchema, studioSchema, websiteSchema } from '../lib/seo';
+import { AUTHOR, DEFAULT_OG_IMAGE, SITE_URL, documentTitle, personSchema, studioSchema, websiteSchema } from '../lib/seo';
 import { LOCALES, LOCALE_META, homePath, postPath, type Alternates, type Locale } from '../i18n/config';
 import { getPostLocales } from '../i18n/content';
 import { UI } from '../i18n/ui';
@@ -48,7 +48,7 @@ const formattedDate = post.data.pubDate.toLocaleDateString(LOCALE_META[locale].d
 <Layout
   locale={locale}
   alternates={alternates}
-  title={`${post.data.title} | ${AUTHOR.name}`}
+  title={documentTitle(post.data.seoTitle ?? post.data.title)}
   description={post.data.description}
   type="article"
   publishedTime={post.data.pubDate}
