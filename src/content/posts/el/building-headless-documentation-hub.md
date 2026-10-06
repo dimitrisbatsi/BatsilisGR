@@ -1,5 +1,6 @@
 ---
 title: "Αποσύνδεση περιεχομένου: Χτίζοντας ένα headless κέντρο τεκμηρίωσης"
+seoTitle: "Headless κέντρο τεκμηρίωσης με WordPress, GraphQL & Astro"
 description: "Πώς ο συνδυασμός WordPress, GraphQL και Astro δημιουργεί μια πολύ γρήγορη και ασφαλή αρχιτεκτονική για εσωτερική τεκμηρίωση."
 pubDate: 2026-06-14
 readingTime: "4 λεπτά ανάγνωσης"

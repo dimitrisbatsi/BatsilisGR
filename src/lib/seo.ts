@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://batsilis.gr';
+export const SITE_URL = 'https://www.batsilis.gr';
 
 export const AUTHOR = {
   name: 'Dimitrios P. Batsilis',
@@ -32,6 +32,15 @@ export const STUDIO = {
   name: 'Chili Studio',
   url: 'https://www.chilistudio.gr/',
 } as const;
+
+/** Bing flags titles above ~70 characters and Google truncates near 60; stay within the stricter bound. */
+export const MAX_TITLE_LENGTH = 60;
+
+/** Appends the author name as a brand suffix only when the result still fits MAX_TITLE_LENGTH. */
+export function documentTitle(title: string): string {
+  const branded = `${title} | ${AUTHOR.name}`;
+  return branded.length <= MAX_TITLE_LENGTH ? branded : title;
+}
 
 export interface OgImage {
   src: string;

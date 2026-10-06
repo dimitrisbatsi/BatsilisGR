@@ -44,7 +44,7 @@ export interface UiStrings {
 export const UI: Record<Locale, UiStrings> = {
   el: {
     meta: {
-      title: 'Dimitrios P. Batsilis | Ψηφιοποίηση Επιχειρήσεων, Analytics & Integrations',
+      title: 'Dimitrios P. Batsilis | Ψηφιοποίηση Επιχειρήσεων & Analytics',
       description:
         'Ψηφιοποίηση επιχειρήσεων: εσωτερικά εργαλεία και αυτοματισμοί, dashboards με ETL, διασυνδέσεις ERP και CRM, και AI agents. Θεσσαλονίκη.',
       ogImageAlt: 'Dimitrios P. Batsilis — Digital Product & Solutions Architect',
@@ -114,7 +114,7 @@ export const UI: Record<Locale, UiStrings> = {
   },
   en: {
     meta: {
-      title: 'Dimitrios P. Batsilis | Digital Product & Solutions Architect',
+      title: 'Dimitrios P. Batsilis | Digitalisation, Data & Integrations',
       description:
         'Solutions architect helping companies digitalise operations: internal tools and automation, analytics dashboards with ETL, ERP and CRM integrations, and AI agents.',
       ogImageAlt: 'Dimitrios P. Batsilis — Digital Product & Solutions Architect',
