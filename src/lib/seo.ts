@@ -19,6 +19,8 @@ export const AUTHOR = {
     'Power BI',
     'Systems integration',
     'ERP integration',
+    'E-commerce integration',
+    'B2B portals',
     'Jira',
     'Jira workflow design',
     'Data warehousing',
