@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { getLocalizedCollection, getPublishedPosts } from '../i18n/content';
-import { homePath, postPath } from '../i18n/config';
+import { blogIndexPath, homePath, postPath, rssPath } from '../i18n/config';
 import { UI } from '../i18n/ui';
 import { AUTHOR, SITE_URL } from '../lib/seo';
 
@@ -38,6 +38,8 @@ export const GET: APIRoute = async ({ site }) => {
     '',
     `- [Portfolio (Greek)](${abs(homePath('el'))}): services, products, experience and articles in Greek`,
     `- [Portfolio (English)](${abs(homePath('en'))}): the same content in English`,
+    `- [Articles (Greek)](${abs(blogIndexPath('el'))}) · [RSS](${abs(rssPath('el'))})`,
+    `- [Articles (English)](${abs(blogIndexPath('en'))}) · [RSS](${abs(rssPath('en'))})`,
     '',
     '## Articles (English)',
     '',

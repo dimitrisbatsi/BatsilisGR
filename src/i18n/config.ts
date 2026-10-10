@@ -34,6 +34,14 @@ export function postPath(locale: Locale, slug: string): string {
   return locale === 'el' ? `/arthra/${slug}/` : `/en/blog/${slug}/`;
 }
 
+export function blogIndexPath(locale: Locale): string {
+  return locale === 'el' ? '/arthra/' : '/en/blog/';
+}
+
+export function rssPath(locale: Locale): string {
+  return locale === DEFAULT_LOCALE ? '/rss.xml' : `/${locale}/rss.xml`;
+}
+
 export function isLocale(value: string): value is Locale {
   return (LOCALES as readonly string[]).includes(value);
 }

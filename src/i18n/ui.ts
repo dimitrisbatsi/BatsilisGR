@@ -39,6 +39,16 @@ export interface UiStrings {
   visitWebsite: string;
   backToPortfolio: string;
   footer: { rights: string; location: string; builtWith: string };
+  articleCta: { heading: string; body: string };
+  blog: {
+    metaTitle: string;
+    metaDescription: string;
+    heading: string;
+    intro: string;
+    allArticles: string;
+    rssTitle: string;
+    rssDescription: string;
+  };
 }
 
 export const UI: Record<Locale, UiStrings> = {
@@ -111,6 +121,20 @@ export const UI: Record<Locale, UiStrings> = {
       location: 'Θεσσαλονίκη',
       builtWith: 'Κατασκευή με Astro & Tailwind v4',
     },
+    articleCta: {
+      heading: 'Έχετε παρόμοια πρόκληση στην επιχείρησή σας;',
+      body: 'Σχεδιάζω και υλοποιώ εσωτερικά εργαλεία, διασυνδέσεις, analytics και AI λύσεις για επιχειρήσεις. Πείτε μου τι σας απασχολεί και θα σας προτείνω το πιο απλό βήμα που αποδίδει.',
+    },
+    blog: {
+      metaTitle: 'Άρθρα | Dimitrios P. Batsilis',
+      metaDescription:
+        'Άρθρα για ψηφιοποίηση επιχειρήσεων, διασυνδέσεις ERP και e-shop, analytics και AI στην πράξη, από την εμπειρία υλοποίησης.',
+      heading: 'Άρθρα & Σκέψεις',
+      intro: 'Πρακτικά άρθρα για ψηφιοποίηση, δεδομένα, διασυνδέσεις και AI, γραμμένα από την πράξη και όχι από τη θεωρία.',
+      allArticles: 'Όλα τα άρθρα',
+      rssTitle: 'Dimitrios P. Batsilis — Άρθρα',
+      rssDescription: 'Ψηφιοποίηση, δεδομένα, διασυνδέσεις και AI για επιχειρήσεις.',
+    },
   },
   en: {
     meta: {
@@ -180,6 +204,20 @@ export const UI: Record<Locale, UiStrings> = {
       rights: 'All rights reserved.',
       location: 'Thessaloniki, Greece',
       builtWith: 'Built with Astro & Tailwind v4',
+    },
+    articleCta: {
+      heading: 'Facing a similar challenge in your business?',
+      body: 'I design and build internal tools, integrations, analytics and AI solutions for companies. Tell me what is holding you back and I will suggest the simplest step that pays off.',
+    },
+    blog: {
+      metaTitle: 'Writing | Dimitrios P. Batsilis',
+      metaDescription:
+        'Articles on business digitalisation, ERP and e-shop integrations, analytics and practical AI, drawn from hands-on delivery.',
+      heading: 'Architecture Insights & Writing',
+      intro: 'Practical articles on digitalisation, data, integrations and AI, written from delivery rather than theory.',
+      allArticles: 'All articles',
+      rssTitle: 'Dimitrios P. Batsilis — Writing',
+      rssDescription: 'Digitalisation, data, integrations and AI for businesses.',
     },
   },
 };
