@@ -1,6 +1,7 @@
 ---
 import { render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import PostList from './PostList.astro';
 import {
   AUTHOR,
   SITE_URL,
@@ -10,7 +11,7 @@ import {
   studioSchema,
   websiteSchema,
 } from '../lib/seo';
-import { LOCALES, LOCALE_META, homePath, postPath, type Alternates, type Locale } from '../i18n/config';
+import { LOCALES, LOCALE_META, blogIndexPath, homePath, type Alternates, type Locale } from '../i18n/config';
 import { getLocalizedCollection, getPublishedPosts } from '../i18n/content';
 import { UI } from '../i18n/ui';
 
@@ -20,7 +21,6 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = UI[locale];
-const dateLocale = LOCALE_META[locale].dateLocale;
 const alternates: Alternates = Object.fromEntries(LOCALES.map((l) => [l, homePath(l)]));
 
 const byOrder = <T extends { entry: { data: { order: number } } }>(a: T, b: T) => a.entry.data.order - b.entry.data.order;
@@ -294,30 +294,16 @@ const contactLabelClass = 'text-zinc-500 w-[4.5rem] shrink-0 text-[11px] upperca
         <h2 class={headingClass}>
           <span class="text-brand-accent shrink-0 whitespace-nowrap">{writingSection.number} //</span> {writingSection.heading}
         </h2>
-        <div class="grid grid-cols-1 gap-4">
-          {posts.map(({ entry: post, slug }) => (
-            <article class="p-4 rounded-xl bg-zinc-900/30 border border-zinc-800/80 hover:border-brand-accent/40 hover:bg-zinc-900/50 transition-all duration-200 flex flex-col gap-2 group">
-              <div class="flex justify-between items-baseline flex-wrap gap-2">
-                <h3 class="text-zinc-100 font-medium group-hover:text-brand-accent transition-colors duration-200 text-sm">
-                  <a href={postPath(locale, slug)} class="inline-flex items-center gap-1.5">
-                    <span>{post.data.title}</span>
-                    <span class="text-xs group-hover:translate-x-0.5 transition-transform">&rarr;</span>
-                  </a>
-                </h3>
-                <span class="text-[10px] font-mono text-zinc-500 whitespace-nowrap">
-                  {post.data.pubDate.toLocaleDateString(dateLocale, { year: 'numeric', month: 'short' })}
-                </span>
-              </div>
-              <p class="text-zinc-400 text-xs leading-relaxed max-w-xl">
-                {post.data.description}
-              </p>
-              <div class="text-[10px] font-mono text-zinc-500 flex items-center gap-2">
-                <span class="text-brand-accent font-semibold">&#9679;</span>
-                <span>{post.data.readingTime}</span>
-              </div>
-            </article>
-          ))}
-        </div>
+        <PostList locale={locale} posts={posts.slice(0, 3)} />
+        {posts.length > 0 && (
+          <a
+            href={blogIndexPath(locale)}
+            class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-zinc-400 hover:text-brand-accent transition-colors duration-200 group"
+          >
+            <span>{t.blog.allArticles}</span>
+            <span class="group-hover:translate-x-0.5 transition-transform duration-200">&rarr;</span>
+          </a>
+        )}
       </section>
 
     </div>

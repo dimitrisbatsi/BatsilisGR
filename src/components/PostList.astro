@@ -1,0 +1,40 @@
+---
+import { LOCALE_META, postPath, type Locale } from '../i18n/config';
+import type { LocalizedEntry } from '../i18n/content';
+
+interface Props {
+  locale: Locale;
+  posts: LocalizedEntry<'posts'>[];
+  /** Heading level of each post title within the surrounding document outline. */
+  headingLevel?: 'h2' | 'h3';
+}
+
+const { locale, posts, headingLevel = 'h3' } = Astro.props;
+const dateLocale = LOCALE_META[locale].dateLocale;
+const Heading = headingLevel;
+---
+
+<div class="grid grid-cols-1 gap-4">
+  {posts.map(({ entry: post, slug }) => (
+    <article class="p-4 rounded-xl bg-zinc-900/30 border border-zinc-800/80 hover:border-brand-accent/40 hover:bg-zinc-900/50 transition-all duration-200 flex flex-col gap-2 group">
+      <div class="flex justify-between items-baseline flex-wrap gap-2">
+        <Heading class="text-zinc-100 font-medium group-hover:text-brand-accent transition-colors duration-200 text-sm">
+          <a href={postPath(locale, slug)} class="inline-flex items-center gap-1.5">
+            <span>{post.data.title}</span>
+            <span class="text-xs group-hover:translate-x-0.5 transition-transform">&rarr;</span>
+          </a>
+        </Heading>
+        <time datetime={post.data.pubDate.toISOString()} class="text-[10px] font-mono text-zinc-500 whitespace-nowrap">
+          {post.data.pubDate.toLocaleDateString(dateLocale, { year: 'numeric', month: 'short' })}
+        </time>
+      </div>
+      <p class="text-zinc-400 text-xs leading-relaxed max-w-xl">
+        {post.data.description}
+      </p>
+      <div class="text-[10px] font-mono text-zinc-500 flex items-center gap-2">
+        <span class="text-brand-accent font-semibold">&#9679;</span>
+        <span>{post.data.readingTime}</span>
+      </div>
+    </article>
+  ))}
+</div>
