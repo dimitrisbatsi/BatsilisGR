@@ -32,7 +32,7 @@ We settled on a headless approach: a setup where the place you write content is 
 
 **GraphQL** is how content leaves the CMS: each application asks for exactly the fields it needs, no more and no less.
 
-**Astro** pulls the content at build time and produces plain static pages. Every publish triggers a new build automatically. The result loads fast, does not hit a database on every visit, and does not leave the admin open to the internet.
+**Astro** pulls the content at build time and produces plain static pages. Builds do not run on every edit: specific, authorised users decide when the new version goes live, so a half-finished article or a mistake never reaches customers by accident. The result loads fast, does not hit a database on every visit, and does not leave the admin open to the internet.
 
 ### What changed in practice
 
