@@ -24,8 +24,14 @@ Working notes for Claude Code sessions on batsilis.gr.
 - Work done for an employer or client is described generically: no company or client names, no internal tool or product names, no unpublished plans.
 - Site contact address: `hello@chilistudio.gr`.
 
+## Plain language
+
+- Sales copy (Instagram, LinkedIn hooks, article openings, self-checks and calls to action) uses everyday words a non-technical business owner understands: time, money, mistakes, customers. Describe the effect, not the tool.
+- Technical terms (ETL, API, headless, data warehouse) appear only in the body of an article, each explained in a few plain words the first time.
+
 ## Social content
 
 - Instagram is the sales channel: symptom-led carousels (1080×1350), DM calls to action.
 - LinkedIn is the reputation channel: knowledge-sharing tone, team credit, no sales calls to action, no links to service offers.
+- Social visuals use one typeface with full Greek and Latin coverage (no Greek fallback to Arial); never Poppins, Montserrat or Plus Jakarta Sans, which lack Greek.
 - The author has Canva Pro connected through the Canva MCP connector. Use it for social visuals the author may want to edit (carousels, covers, post images).
