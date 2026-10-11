@@ -27,11 +27,20 @@ export async function getLocalizedCollection<C extends CollectionKey>(
     .filter((item) => item.locale === locale);
 }
 
+/** Most recent of publication and revision date; drives ordering and listings. */
+export function lastModified(post: CollectionEntry<'posts'>): Date {
+  return post.data.updatedDate ?? post.data.pubDate;
+}
+
 export async function getPublishedPosts(locale: Locale): Promise<LocalizedEntry<'posts'>[]> {
   const posts = await getLocalizedCollection('posts', locale);
   return posts
     .filter(({ entry }) => !entry.data.draft)
-    .sort((a, b) => b.entry.data.pubDate.getTime() - a.entry.data.pubDate.getTime());
+    .sort(
+      (a, b) =>
+        lastModified(b.entry).getTime() - lastModified(a.entry).getTime() ||
+        b.entry.data.pubDate.getTime() - a.entry.data.pubDate.getTime(),
+    );
 }
 
 /** Locales in which a published translation of the given post exists. */

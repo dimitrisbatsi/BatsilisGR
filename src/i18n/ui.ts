@@ -46,6 +46,7 @@ export interface UiStrings {
     heading: string;
     intro: string;
     allArticles: string;
+    updated: string;
     rssTitle: string;
     rssDescription: string;
   };
@@ -132,6 +133,7 @@ export const UI: Record<Locale, UiStrings> = {
       heading: 'Άρθρα & Σκέψεις',
       intro: 'Πρακτικά άρθρα για ψηφιοποίηση, δεδομένα, διασυνδέσεις και AI, γραμμένα από την πράξη και όχι από τη θεωρία.',
       allArticles: 'Όλα τα άρθρα',
+      updated: 'Ενημέρωση',
       rssTitle: 'Dimitrios P. Batsilis — Άρθρα',
       rssDescription: 'Ψηφιοποίηση, δεδομένα, διασυνδέσεις και AI για επιχειρήσεις.',
     },
@@ -216,6 +218,7 @@ export const UI: Record<Locale, UiStrings> = {
       heading: 'Architecture Insights & Writing',
       intro: 'Practical articles on digitalisation, data, integrations and AI, written from delivery rather than theory.',
       allArticles: 'All articles',
+      updated: 'Updated',
       rssTitle: 'Dimitrios P. Batsilis — Writing',
       rssDescription: 'Digitalisation, data, integrations and AI for businesses.',
     },

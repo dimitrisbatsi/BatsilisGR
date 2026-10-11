@@ -15,6 +15,7 @@ Working notes for Claude Code sessions on batsilis.gr.
 - Every article ships in both `el` and `en`, with `seoTitle` when `title` exceeds 60 characters.
 - Diagrams go in `public/images/articles/<name>-{el,en}.svg`. Keep them narrow (~480px wide) so they stay readable on mobile.
 - Write reader-first: open with the reader's problem, use the author's experience as proof, close with a self-check and a call to action.
+- To refresh an existing article, rewrite it in place (keep the slug and `pubDate`) and set `updatedDate`; it then sorts as recent and emits `dateModified`.
 - Open a PR for the author's review; merge only when asked.
 
 ## Content rules

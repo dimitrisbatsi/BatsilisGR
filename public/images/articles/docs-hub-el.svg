@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 974" width="480" height="974" role="img" aria-labelledby="t d">
+<title id="t">Πώς δουλεύει ένα headless κέντρο τεκμηρίωσης</title>
+<desc id="d">01 · ΣΥΝΤΑΞΗ: Η ομάδα γράφει σε Markdown και αποφασίζει πότε δημοσιεύει. Δεν χρειάζεται κανείς να ξέρει κώδικα για να ανεβάσει ένα άρθρο. 02 · CMS (WORDPRESS): Μία πλατφόρμα για όλα τα προϊόντα, μόνο για όσους γράφουν. Αν λείπει: κάθε προϊόν αποκτά δικό του site, με δική του συντήρηση. 03 · API (GRAPHQL): Δίνει σε κάθε εφαρμογή ακριβώς το περιεχόμενο που χρειάζεται. Αν λείπει: το περιεχόμενο δεν μπορεί να πάει πουθενά αλλού εκτός από ένα site. 04 · SITE (ASTRO): Στατικές σελίδες: γρήγορες, χωρίς βάση και admin στο internet. Αν λείπει: κάθε επίσκεψη φορτώνει τη βάση και το admin μένει εκτεθειμένο. 05 · ΚΑΝΑΛΙΑ: Πελάτες, ομάδα, AI βοηθός. Όλοι διαβάζουν από την ίδια πηγή, άρα όλοι βλέπουν την ίδια απάντηση.</desc>
+<rect width="480" height="974" rx="14" fill="#0f141f" stroke="#1f2937"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#52525b"/></marker></defs>
+<text x="20" y="52" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="19" font-weight="600" fill="#f4f4f5">Πώς δουλεύει ένα headless κέντρο</text>
+<text x="20" y="76" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="19" font-weight="600" fill="#f4f4f5">τεκμηρίωσης</text>
+<text x="20" y="98" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14" fill="#a1a1aa">Μία πηγή περιεχομένου για όλα τα προϊόντα και όλα τα κανάλια.</text>
+<rect x="20" y="118" width="440" height="148" rx="10" fill="#161f30" stroke="#334155"/>
+<text x="38" y="148" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#ff9030" letter-spacing="0.4">01 · ΣΥΝΤΑΞΗ</text>
+<text x="38" y="180" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">Η ομάδα γράφει σε Markdown και αποφασίζει</text>
+<text x="38" y="202" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">πότε δημοσιεύει</text>
+<text x="38" y="230" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#a1a1aa">Δεν χρειάζεται κανείς να ξέρει κώδικα για να ανεβάσει</text>
+<text x="38" y="250" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#a1a1aa">ένα άρθρο.</text>
+<line x1="240" y1="269" x2="240" y2="285" stroke="#52525b" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="20" y="290" width="440" height="148" rx="10" fill="#161f30" stroke="#3b2a1a"/>
+<rect x="20" y="300" width="3" height="128" rx="1.5" fill="#ff9030"/>
+<text x="38" y="320" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#ff9030" letter-spacing="0.4">02 · CMS (WORDPRESS)</text>
+<text x="38" y="352" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">Μία πλατφόρμα για όλα τα προϊόντα, μόνο για</text>
+<text x="38" y="374" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">όσους γράφουν</text>
+<text x="38" y="402" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5"><tspan font-weight="600" fill="#fdba74">Αν λείπει:</tspan><tspan fill="#d4d4d8"> κάθε προϊόν αποκτά δικό του site, με δική του</tspan></text>
+<text x="38" y="422" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#d4d4d8">συντήρηση.</text>
+<line x1="240" y1="441" x2="240" y2="457" stroke="#52525b" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="20" y="462" width="440" height="148" rx="10" fill="#161f30" stroke="#3b2a1a"/>
+<rect x="20" y="472" width="3" height="128" rx="1.5" fill="#ff9030"/>
+<text x="38" y="492" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#ff9030" letter-spacing="0.4">03 · API (GRAPHQL)</text>
+<text x="38" y="524" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">Δίνει σε κάθε εφαρμογή ακριβώς το περιεχόμενο</text>
+<text x="38" y="546" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">που χρειάζεται</text>
+<text x="38" y="574" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5"><tspan font-weight="600" fill="#fdba74">Αν λείπει:</tspan><tspan fill="#d4d4d8"> το περιεχόμενο δεν μπορεί να πάει πουθενά</tspan></text>
+<text x="38" y="594" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#d4d4d8">αλλού εκτός από ένα site.</text>
+<line x1="240" y1="613" x2="240" y2="629" stroke="#52525b" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="20" y="634" width="440" height="148" rx="10" fill="#161f30" stroke="#3b2a1a"/>
+<rect x="20" y="644" width="3" height="128" rx="1.5" fill="#ff9030"/>
+<text x="38" y="664" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#ff9030" letter-spacing="0.4">04 · SITE (ASTRO)</text>
+<text x="38" y="696" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">Στατικές σελίδες: γρήγορες, χωρίς βάση και</text>
+<text x="38" y="718" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">admin στο internet</text>
+<text x="38" y="746" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5"><tspan font-weight="600" fill="#fdba74">Αν λείπει:</tspan><tspan fill="#d4d4d8"> κάθε επίσκεψη φορτώνει τη βάση και το admin</tspan></text>
+<text x="38" y="766" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#d4d4d8">μένει εκτεθειμένο.</text>
+<line x1="240" y1="785" x2="240" y2="801" stroke="#52525b" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="20" y="806" width="440" height="126" rx="10" fill="#161f30" stroke="#334155"/>
+<text x="38" y="836" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#ff9030" letter-spacing="0.4">05 · ΚΑΝΑΛΙΑ</text>
+<text x="38" y="868" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">Πελάτες, ομάδα, AI βοηθός</text>
+<text x="38" y="896" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#a1a1aa">Όλοι διαβάζουν από την ίδια πηγή, άρα όλοι βλέπουν την</text>
+<text x="38" y="916" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#a1a1aa">ίδια απάντηση.</text>
+<text x="460" y="958" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#71717a">batsilis.gr</text>
+</svg>

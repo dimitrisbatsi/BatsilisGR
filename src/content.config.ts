@@ -36,6 +36,8 @@ const posts = defineCollection({
     seoTitle: z.string().optional(),
     description: z.string(),
     pubDate: z.coerce.date(),
+    /** Set when an article is substantially revised; surfaces it as recent and feeds dateModified. */
+    updatedDate: z.coerce.date().optional(),
     readingTime: z.string(),
     draft: z.boolean().default(false),
   }),

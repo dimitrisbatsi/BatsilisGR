@@ -3,7 +3,7 @@ import { render, type CollectionEntry } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import { AUTHOR, DEFAULT_OG_IMAGE, SITE_URL, documentTitle, personSchema, studioSchema, websiteSchema } from '../lib/seo';
 import { LOCALES, LOCALE_META, blogIndexPath, homePath, postPath, type Alternates, type Locale } from '../i18n/config';
-import { getPostLocales } from '../i18n/content';
+import { getPostLocales, lastModified } from '../i18n/content';
 import { UI } from '../i18n/ui';
 
 interface Props {
@@ -29,6 +29,7 @@ const blogPosting = {
   headline: post.data.title,
   description: post.data.description,
   datePublished: post.data.pubDate.toISOString(),
+  dateModified: lastModified(post).toISOString(),
   url: postURL,
   mainEntityOfPage: postURL,
   image: new URL(DEFAULT_OG_IMAGE.src, site).href,
@@ -41,11 +42,10 @@ const blogPosting = {
 // Same subject prefix as the site-wide CTA, suffixed with the article so inquiries can be attributed
 const ctaHref = `mailto:${AUTHOR.email}?subject=${encodeURIComponent(`${t.cta.mailSubject} — ${post.data.title}`)}`;
 
-const formattedDate = post.data.pubDate.toLocaleDateString(LOCALE_META[locale].dateLocale, {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-});
+const dateFormat: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+const formattedDate = post.data.pubDate.toLocaleDateString(LOCALE_META[locale].dateLocale, dateFormat);
+const updatedDate = post.data.updatedDate;
+const formattedUpdated = updatedDate?.toLocaleDateString(LOCALE_META[locale].dateLocale, dateFormat);
 ---
 
 <Layout
@@ -55,6 +55,7 @@ const formattedDate = post.data.pubDate.toLocaleDateString(LOCALE_META[locale].d
   description={post.data.description}
   type="article"
   publishedTime={post.data.pubDate}
+  modifiedTime={updatedDate}
   jsonLd={[
     blogPosting,
     author,
@@ -79,6 +80,12 @@ const formattedDate = post.data.pubDate.toLocaleDateString(LOCALE_META[locale].d
     <header class="space-y-4">
       <div class="flex items-center gap-4 text-xs font-mono text-zinc-500">
         <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
+        {updatedDate && (
+          <>
+            <span class="text-zinc-700">&middot;</span>
+            <span>{t.blog.updated} <time datetime={updatedDate.toISOString()}>{formattedUpdated}</time></span>
+          </>
+        )}
         <span class="text-zinc-700">&middot;</span>
         <span class="text-brand-accent">{post.data.readingTime}</span>
       </div>
