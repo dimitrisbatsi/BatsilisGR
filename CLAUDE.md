@@ -47,5 +47,5 @@ Tone per channel:
 
 - Instagram is the sales channel: symptom-led carousels (1080×1350), DM calls to action.
 - LinkedIn is the reputation channel: knowledge-sharing tone, team credit, no sales calls to action, no links to service offers.
-- Social visuals use one typeface with full Greek and Latin coverage (no Greek fallback to Arial); never Poppins, Montserrat or Plus Jakarta Sans, which lack Greek.
+- Social visuals use **Inter** (the site's typeface; full Greek and Latin coverage, available in Canva). Never Poppins, Montserrat or Plus Jakarta Sans: they lack Greek, so Canva swaps Greek text to Arial.
 - The author has Canva Pro connected through the Canva MCP connector. Use it for social visuals the author may want to edit (carousels, covers, post images).
