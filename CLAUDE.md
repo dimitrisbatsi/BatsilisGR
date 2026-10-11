@@ -29,6 +29,20 @@ Working notes for Claude Code sessions on batsilis.gr.
 - Sales copy (Instagram, LinkedIn hooks, article openings, self-checks and calls to action) uses everyday words a non-technical business owner understands: time, money, mistakes, customers. Describe the effect, not the tool.
 - Technical terms (ETL, API, headless, data warehouse) appear only in the body of an article, each explained in a few plain words the first time.
 
+## Content workflow
+
+Every article runs through the same pipeline, in this order:
+
+1. **Article** (el + en) on the site, via PR.
+2. **LinkedIn: 2-3 posts** from the article.
+3. **Instagram: up to 2 post variations** where the material allows.
+4. **Canva graphics** for each Instagram post (one design per post), built on the author's existing Instagram template.
+
+Tone per channel:
+
+- **LinkedIn stays neutral.** The author's employer and colleagues follow it: share lessons, credit the team, no selling, no links to service offers, nothing that reads as competing with or exposing the employer.
+- **Instagram is the sales channel.** Symptom-led hooks, plain language, a clear call to action (e.g. a DM keyword).
+
 ## Social content
 
 - Instagram is the sales channel: symptom-led carousels (1080×1350), DM calls to action.
