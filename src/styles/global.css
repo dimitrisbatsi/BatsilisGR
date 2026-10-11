@@ -187,3 +187,12 @@
 .prose-custom hr {
   margin: 2rem 0;
 }
+
+.prose-custom img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border-primary);
+}
