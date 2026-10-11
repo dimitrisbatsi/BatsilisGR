@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 884" width="480" height="884" role="img" aria-labelledby="t d">
+<title id="t">Πώς στήνεται σωστά το reporting</title>
+<desc id="d">01 · ΠΗΓΕΣ: ERP, e-shop, CRM, Excel. Αλλάζουν με τα χρόνια. Τα επόμενα επίπεδα δεν πρέπει να το καταλαβαίνουν. 02 · ΕΞΑΓΩΓΗ (ETL): Τραβάει τα δεδομένα με πρόγραμμα, όχι σε κάθε refresh. Αν λείπει: το report χτυπάει απευθείας το ERP και θέλει λεπτά για να ανοίξει. 03 · ΑΠΟΘΗΚΗ ΔΕΔΟΜΕΝΩΝ: Καθαρό ιστορικό σε μία, σταθερή μορφή. Αν λείπει: μια αλλαγή συστήματος σπάει όλες τις αναφορές. 04 · ΜΟΝΤΕΛΟ: Υπολογισμοί και ορισμοί KPI, γραμμένοι μία φορά. Αν λείπει: δύο reports δίνουν δύο διαφορετικά νούμερα για το ίδιο πράγμα. 05 · ΑΝΑΦΟΡΕΣ: Power BI: μόνο παρουσίαση. Ανοίγουν και απαντούν, γιατί η βαριά δουλειά έχει γίνει πιο πάνω.</desc>
+<rect width="480" height="884" rx="14" fill="#0f141f" stroke="#1f2937"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#52525b"/></marker></defs>
+<text x="20" y="52" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="19" font-weight="600" fill="#f4f4f5">Πώς στήνεται σωστά το reporting</text>
+<text x="20" y="74" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14" fill="#a1a1aa">Πάνω στο ERP σου: πέντε επίπεδα, το καθένα με μία δουλειά.</text>
+<rect x="20" y="94" width="440" height="126" rx="10" fill="#161f30" stroke="#334155"/>
+<text x="38" y="124" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#ff9030" letter-spacing="0.4">01 · ΠΗΓΕΣ</text>
+<text x="38" y="156" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">ERP, e-shop, CRM, Excel</text>
+<text x="38" y="184" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#a1a1aa">Αλλάζουν με τα χρόνια. Τα επόμενα επίπεδα δεν πρέπει</text>
+<text x="38" y="204" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#a1a1aa">να το καταλαβαίνουν.</text>
+<line x1="240" y1="223" x2="240" y2="239" stroke="#52525b" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="20" y="244" width="440" height="148" rx="10" fill="#161f30" stroke="#3b2a1a"/>
+<rect x="20" y="254" width="3" height="128" rx="1.5" fill="#ff9030"/>
+<text x="38" y="274" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#ff9030" letter-spacing="0.4">02 · ΕΞΑΓΩΓΗ (ETL)</text>
+<text x="38" y="306" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">Τραβάει τα δεδομένα με πρόγραμμα, όχι σε κάθε</text>
+<text x="38" y="328" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">refresh</text>
+<text x="38" y="356" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5"><tspan font-weight="600" fill="#fdba74">Αν λείπει:</tspan><tspan fill="#d4d4d8"> το report χτυπάει απευθείας το ERP και θέλει</tspan></text>
+<text x="38" y="376" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#d4d4d8">λεπτά για να ανοίξει.</text>
+<line x1="240" y1="395" x2="240" y2="411" stroke="#52525b" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="20" y="416" width="440" height="126" rx="10" fill="#161f30" stroke="#3b2a1a"/>
+<rect x="20" y="426" width="3" height="106" rx="1.5" fill="#ff9030"/>
+<text x="38" y="446" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#ff9030" letter-spacing="0.4">03 · ΑΠΟΘΗΚΗ ΔΕΔΟΜΕΝΩΝ</text>
+<text x="38" y="478" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">Καθαρό ιστορικό σε μία, σταθερή μορφή</text>
+<text x="38" y="506" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5"><tspan font-weight="600" fill="#fdba74">Αν λείπει:</tspan><tspan fill="#d4d4d8"> μια αλλαγή συστήματος σπάει όλες τις</tspan></text>
+<text x="38" y="526" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#d4d4d8">αναφορές.</text>
+<line x1="240" y1="545" x2="240" y2="561" stroke="#52525b" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="20" y="566" width="440" height="126" rx="10" fill="#161f30" stroke="#3b2a1a"/>
+<rect x="20" y="576" width="3" height="106" rx="1.5" fill="#ff9030"/>
+<text x="38" y="596" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#ff9030" letter-spacing="0.4">04 · ΜΟΝΤΕΛΟ</text>
+<text x="38" y="628" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">Υπολογισμοί και ορισμοί KPI, γραμμένοι μία φορά</text>
+<text x="38" y="656" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5"><tspan font-weight="600" fill="#fdba74">Αν λείπει:</tspan><tspan fill="#d4d4d8"> δύο reports δίνουν δύο διαφορετικά νούμερα</tspan></text>
+<text x="38" y="676" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#d4d4d8">για το ίδιο πράγμα.</text>
+<line x1="240" y1="695" x2="240" y2="711" stroke="#52525b" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="20" y="716" width="440" height="126" rx="10" fill="#161f30" stroke="#334155"/>
+<text x="38" y="746" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#ff9030" letter-spacing="0.4">05 · ΑΝΑΦΟΡΕΣ</text>
+<text x="38" y="778" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">Power BI: μόνο παρουσίαση</text>
+<text x="38" y="806" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#a1a1aa">Ανοίγουν και απαντούν, γιατί η βαριά δουλειά έχει γίνει</text>
+<text x="38" y="826" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#a1a1aa">πιο πάνω.</text>
+<text x="460" y="868" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#71717a">batsilis.gr</text>
+</svg>

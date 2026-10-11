@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 842" width="480" height="842" role="img" aria-labelledby="t d">
+<title id="t">How to set up reporting properly</title>
+<desc id="d">01 · SOURCES: ERP, e-shop, CRM, Excel. They change over the years. The layers below should not notice. 02 · EXTRACTION (ETL): Pulls data on a schedule, not on every refresh. If missing: the report hits the ERP directly and takes minutes to open. 03 · DATA WAREHOUSE: Clean history in one stable shape. If missing: a system change breaks every report. 04 · MODEL: Calculations and KPI definitions, written once. If missing: two reports give two different numbers for the same thing. 05 · REPORTS: Power BI: presentation only. They open and answer, because the heavy lifting happened upstream.</desc>
+<rect width="480" height="842" rx="14" fill="#0f141f" stroke="#1f2937"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#52525b"/></marker></defs>
+<text x="20" y="52" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="19" font-weight="600" fill="#f4f4f5">How to set up reporting properly</text>
+<text x="20" y="74" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14" fill="#a1a1aa">On top of your ERP: five layers, each with one job.</text>
+<rect x="20" y="94" width="440" height="126" rx="10" fill="#161f30" stroke="#334155"/>
+<text x="38" y="124" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#ff9030" letter-spacing="0.4">01 · SOURCES</text>
+<text x="38" y="156" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">ERP, e-shop, CRM, Excel</text>
+<text x="38" y="184" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#a1a1aa">They change over the years. The layers below should not</text>
+<text x="38" y="204" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#a1a1aa">notice.</text>
+<line x1="240" y1="223" x2="240" y2="239" stroke="#52525b" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="20" y="244" width="440" height="126" rx="10" fill="#161f30" stroke="#3b2a1a"/>
+<rect x="20" y="254" width="3" height="106" rx="1.5" fill="#ff9030"/>
+<text x="38" y="274" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#ff9030" letter-spacing="0.4">02 · EXTRACTION (ETL)</text>
+<text x="38" y="306" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">Pulls data on a schedule, not on every refresh</text>
+<text x="38" y="334" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5"><tspan font-weight="600" fill="#fdba74">If missing:</tspan><tspan fill="#d4d4d8"> the report hits the ERP directly and takes</tspan></text>
+<text x="38" y="354" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#d4d4d8">minutes to open.</text>
+<line x1="240" y1="373" x2="240" y2="389" stroke="#52525b" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="20" y="394" width="440" height="106" rx="10" fill="#161f30" stroke="#3b2a1a"/>
+<rect x="20" y="404" width="3" height="86" rx="1.5" fill="#ff9030"/>
+<text x="38" y="424" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#ff9030" letter-spacing="0.4">03 · DATA WAREHOUSE</text>
+<text x="38" y="456" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">Clean history in one stable shape</text>
+<text x="38" y="484" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5"><tspan font-weight="600" fill="#fdba74">If missing:</tspan><tspan fill="#d4d4d8"> a system change breaks every report.</tspan></text>
+<line x1="240" y1="503" x2="240" y2="519" stroke="#52525b" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="20" y="524" width="440" height="126" rx="10" fill="#161f30" stroke="#3b2a1a"/>
+<rect x="20" y="534" width="3" height="106" rx="1.5" fill="#ff9030"/>
+<text x="38" y="554" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#ff9030" letter-spacing="0.4">04 · MODEL</text>
+<text x="38" y="586" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">Calculations and KPI definitions, written once</text>
+<text x="38" y="614" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5"><tspan font-weight="600" fill="#fdba74">If missing:</tspan><tspan fill="#d4d4d8"> two reports give two different numbers for the</tspan></text>
+<text x="38" y="634" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#d4d4d8">same thing.</text>
+<line x1="240" y1="653" x2="240" y2="669" stroke="#52525b" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="20" y="674" width="440" height="126" rx="10" fill="#161f30" stroke="#334155"/>
+<text x="38" y="704" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#ff9030" letter-spacing="0.4">05 · REPORTS</text>
+<text x="38" y="736" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">Power BI: presentation only</text>
+<text x="38" y="764" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#a1a1aa">They open and answer, because the heavy lifting</text>
+<text x="38" y="784" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#a1a1aa">happened upstream.</text>
+<text x="460" y="826" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#71717a">batsilis.gr</text>
+</svg>

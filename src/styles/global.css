@@ -187,3 +187,11 @@
 .prose-custom hr {
   margin: 2rem 0;
 }
+
+.prose-custom img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.75rem auto;
+  border-radius: 0.75rem;
+}
