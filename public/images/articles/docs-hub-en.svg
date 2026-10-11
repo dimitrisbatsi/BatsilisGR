@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 930" width="480" height="930" role="img" aria-labelledby="t d">
+<title id="t">How a headless documentation hub works</title>
+<desc id="d">01 · AUTHORING: The team writes in Markdown and decides when to publish. Nobody needs to know code to publish an article. 02 · CMS (WORDPRESS): One platform for every product, visible only to authors. If missing: every product ends up with its own site and its own upkeep. 03 · API (GRAPHQL): Gives each application exactly the content it needs. If missing: the content cannot go anywhere except one website. 04 · SITE (ASTRO): Static pages: fast, with no database or admin on the internet. If missing: every visit loads the database and the admin stays exposed. 05 · CHANNELS: Customers, team, AI assistant. Everyone reads from one source, so everyone gets the same answer.</desc>
+<rect width="480" height="930" rx="14" fill="#0f141f" stroke="#1f2937"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#52525b"/></marker></defs>
+<text x="20" y="52" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="19" font-weight="600" fill="#f4f4f5">How a headless documentation hub works</text>
+<text x="20" y="74" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14" fill="#a1a1aa">One content source for every product and every channel.</text>
+<rect x="20" y="94" width="440" height="128" rx="10" fill="#161f30" stroke="#334155"/>
+<text x="38" y="124" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#ff9030" letter-spacing="0.4">01 · AUTHORING</text>
+<text x="38" y="156" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">The team writes in Markdown and decides when</text>
+<text x="38" y="178" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">to publish</text>
+<text x="38" y="206" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#a1a1aa">Nobody needs to know code to publish an article.</text>
+<line x1="240" y1="225" x2="240" y2="241" stroke="#52525b" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="20" y="246" width="440" height="148" rx="10" fill="#161f30" stroke="#3b2a1a"/>
+<rect x="20" y="256" width="3" height="128" rx="1.5" fill="#ff9030"/>
+<text x="38" y="276" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#ff9030" letter-spacing="0.4">02 · CMS (WORDPRESS)</text>
+<text x="38" y="308" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">One platform for every product, visible only to</text>
+<text x="38" y="330" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">authors</text>
+<text x="38" y="358" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5"><tspan font-weight="600" fill="#fdba74">If missing:</tspan><tspan fill="#d4d4d8"> every product ends up with its own site and its</tspan></text>
+<text x="38" y="378" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#d4d4d8">own upkeep.</text>
+<line x1="240" y1="397" x2="240" y2="413" stroke="#52525b" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="20" y="418" width="440" height="148" rx="10" fill="#161f30" stroke="#3b2a1a"/>
+<rect x="20" y="428" width="3" height="128" rx="1.5" fill="#ff9030"/>
+<text x="38" y="448" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#ff9030" letter-spacing="0.4">03 · API (GRAPHQL)</text>
+<text x="38" y="480" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">Gives each application exactly the content it</text>
+<text x="38" y="502" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">needs</text>
+<text x="38" y="530" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5"><tspan font-weight="600" fill="#fdba74">If missing:</tspan><tspan fill="#d4d4d8"> the content cannot go anywhere except one</tspan></text>
+<text x="38" y="550" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#d4d4d8">website.</text>
+<line x1="240" y1="569" x2="240" y2="585" stroke="#52525b" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="20" y="590" width="440" height="148" rx="10" fill="#161f30" stroke="#3b2a1a"/>
+<rect x="20" y="600" width="3" height="128" rx="1.5" fill="#ff9030"/>
+<text x="38" y="620" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#ff9030" letter-spacing="0.4">04 · SITE (ASTRO)</text>
+<text x="38" y="652" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">Static pages: fast, with no database or admin on</text>
+<text x="38" y="674" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">the internet</text>
+<text x="38" y="702" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5"><tspan font-weight="600" fill="#fdba74">If missing:</tspan><tspan fill="#d4d4d8"> every visit loads the database and the admin</tspan></text>
+<text x="38" y="722" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#d4d4d8">stays exposed.</text>
+<line x1="240" y1="741" x2="240" y2="757" stroke="#52525b" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="20" y="762" width="440" height="126" rx="10" fill="#161f30" stroke="#334155"/>
+<text x="38" y="792" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#ff9030" letter-spacing="0.4">05 · CHANNELS</text>
+<text x="38" y="824" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="16.5" font-weight="600" fill="#f4f4f5">Customers, team, AI assistant</text>
+<text x="38" y="852" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#a1a1aa">Everyone reads from one source, so everyone gets the</text>
+<text x="38" y="872" font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif" font-size="14.5" fill="#a1a1aa">same answer.</text>
+<text x="460" y="914" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#71717a">batsilis.gr</text>
+</svg>
