@@ -2,7 +2,7 @@
 title: "I rebuilt our support metrics architecture three times. Here's why."
 seoTitle: "I rebuilt our metrics architecture three times"
 description: "If Power BI on top of your ERP is slow or gives numbers you don't trust, Power BI is rarely the problem. What I learned building the same system three times."
-pubDate: 2026-10-19
+pubDate: 2026-10-11
 readingTime: "5 min read"
 draft: false
 ---
