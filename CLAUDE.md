@@ -7,7 +7,7 @@ Working notes for Claude Code sessions on batsilis.gr.
 - Astro 6 (static), Tailwind v4, content collections in `src/content/<collection>/{el,en}/`.
 - Greek is the default locale (`/`, `/arthra/<slug>/`); English lives under `/en/` (`/en/blog/<slug>/`).
 - Translations pair by identical filename in `el/` and `en/`.
-- German (`/de/`) is a home page only, for clients in Germany and Switzerland: `src/i18n/ui.ts` plus `experience/de/` and `projects/de/`. The author works in Greek and English only, so German pages say so and link to the English articles; there is no `posts/de/`. Keep German copy in step when the home page or those collections change.
+- German (`/de/`) is a home page only, for clients in Germany, Austria and Switzerland: `src/i18n/ui.ts` plus `experience/de/` and `projects/de/`. The author works in Greek and English only, so German pages say so and link to the English articles; there is no `posts/de/`. Keep German copy in step when the home page or those collections change.
 - Canonical host: `https://www.batsilis.gr`.
 - Before pushing: `npm run check` and `npm run build`.
 

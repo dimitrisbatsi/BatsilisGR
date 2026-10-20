@@ -243,7 +243,7 @@ export const UI: Record<Locale, UiStrings> = {
       'Ich helfe Unternehmen, ihre Arbeitsabläufe zu digitalisieren: Ich konzipiere und baue die internen Tools, Automatisierungen, Datenflüsse und Schnittstellen, die manuelle Arbeit und verstreute Excel-Tabellen ersetzen.',
       'Mein Hintergrund umfasst Solutions Engineering für Unternehmenssoftware, Plattformarchitektur mit .NET, entkoppelte Frontends (Vue.js, Nuxt 3, Astro) sowie Datenpipelines mit Python und SQL, die Power BI speisen.',
       'Ich begleite Projekte von Anfang bis Ende: von der Analyse des Prozesses und der Wahl der passenden Plattform, ob individuelle Lösung oder bestehendes Werkzeug wie Jira, über die Umsetzung bis zur Einführung und Nutzung im Team.',
-      'Für Unternehmen in Deutschland und der Schweiz arbeite ich remote aus Thessaloniki. Gespräche und Projektunterlagen laufen auf Englisch.',
+      'Für Unternehmen in Deutschland, Österreich und der Schweiz arbeite ich remote aus Thessaloniki. Gespräche und Projektunterlagen laufen auf Englisch.',
     ],
     services: [
       {

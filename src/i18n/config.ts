@@ -2,7 +2,11 @@ export const LOCALES = ['el', 'en', 'de'] as const;
 
 export type Locale = (typeof LOCALES)[number];
 
+/** Locale served at the site root, without a path prefix. */
 export const DEFAULT_LOCALE: Locale = 'el';
+
+/** hreflang x-default target for visitors whose language has no version: English, since the site targets clients and roles abroad. */
+export const X_DEFAULT_LOCALE: Locale = 'en';
 
 /** Locales with their own articles. German pages link to the English ones, since all collaboration runs in Greek or English. */
 export const POST_LOCALES = ['el', 'en'] as const satisfies readonly Locale[];

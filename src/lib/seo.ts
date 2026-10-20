@@ -38,7 +38,7 @@ export const AUTHOR = {
 } as const;
 
 /** Countries targeted by the service offer, for schema.org areaServed. */
-export const AREA_SERVED = ['Greece', 'Germany', 'Switzerland'] as const;
+export const AREA_SERVED = ['Greece', 'Germany', 'Austria', 'Switzerland'] as const;
 
 export const STUDIO = {
   name: 'Chili Studio',
