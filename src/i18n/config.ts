@@ -56,6 +56,17 @@ export function blogIndexPath(locale: PostLocale): string {
   return locale === 'el' ? '/arthra/' : '/en/blog/';
 }
 
+const LEGAL_PATHS: Record<Locale, string> = {
+  el: '/nomika/',
+  en: '/en/legal/',
+  de: '/de/impressum/',
+};
+
+/** Legal notice and privacy policy; German readers look for it under the name "Impressum". */
+export function legalPath(locale: Locale): string {
+  return LEGAL_PATHS[locale];
+}
+
 export function rssPath(locale: PostLocale): string {
   return locale === DEFAULT_LOCALE ? '/rss.xml' : `/${locale}/rss.xml`;
 }

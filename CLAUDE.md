@@ -24,6 +24,7 @@ Working notes for Claude Code sessions on batsilis.gr.
 - Never invent numbers, clients or results. Use only figures the author supplied.
 - Work done for an employer or client is described generically: no company or client names, no internal tool or product names, no unpublished plans.
 - Site contact address: `hello@chilistudio.gr`.
+- Legal notice and privacy policy live in `src/content/legal/{el,en,de}/notice.md` (`/nomika/`, `/en/legal/`, `/de/impressum/`). The author is the responsible person, not yet registered as self-employed: no street address or VAT ID until registration, then add both to all three files and bump `updatedDate`. Update the privacy section whenever the site adds a third-party service, cookie or form.
 
 ## Plain language
 

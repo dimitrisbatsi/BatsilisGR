@@ -47,9 +47,10 @@ export interface UiStrings {
   profile: string[];
   services: Service[];
   visitWebsite: string;
+  backToPortfolio: string;
   /** Link from the home page and articles to the article index. */
   allArticles: string;
-  footer: { rights: string; location: string; builtWith: string };
+  footer: { rights: string; location: string; builtWith: string; legal: string };
 }
 
 /** Strings used only by article pages, the article index and feeds, which exist in POST_LOCALES. */
@@ -59,7 +60,6 @@ export interface BlogStrings {
   heading: string;
   intro: string;
   updated: string;
-  backToPortfolio: string;
   rssTitle: string;
   rssDescription: string;
   articleCta: { heading: string; body: string };
@@ -131,11 +131,13 @@ export const UI: Record<Locale, UiStrings> = {
       },
     ],
     visitWebsite: 'Επίσκεψη',
+    backToPortfolio: 'Πίσω στην αρχική',
     allArticles: 'Όλα τα άρθρα',
     footer: {
       rights: 'Με επιφύλαξη παντός δικαιώματος.',
       location: 'Θεσσαλονίκη',
       builtWith: 'Κατασκευή με Astro & Tailwind v4',
+      legal: 'Νομικά & Απόρρητο',
     },
   },
   en: {
@@ -203,11 +205,13 @@ export const UI: Record<Locale, UiStrings> = {
       },
     ],
     visitWebsite: 'Visit Website',
+    backToPortfolio: 'Back to portfolio',
     allArticles: 'All articles',
     footer: {
       rights: 'All rights reserved.',
       location: 'Thessaloniki, Greece',
       builtWith: 'Built with Astro & Tailwind v4',
+      legal: 'Legal & Privacy',
     },
   },
   de: {
@@ -277,11 +281,13 @@ export const UI: Record<Locale, UiStrings> = {
       },
     ],
     visitWebsite: 'Website besuchen',
+    backToPortfolio: 'Zurück zur Startseite',
     allArticles: 'Alle Artikel (Englisch)',
     footer: {
       rights: 'Alle Rechte vorbehalten.',
       location: 'Thessaloniki, Griechenland',
       builtWith: 'Erstellt mit Astro & Tailwind v4',
+      legal: 'Impressum & Datenschutz',
     },
   },
 };
@@ -294,7 +300,6 @@ export const BLOG_UI: Record<PostLocale, BlogStrings> = {
     heading: 'Άρθρα & Σκέψεις',
     intro: 'Πρακτικά άρθρα για ψηφιοποίηση, δεδομένα, διασυνδέσεις και AI, γραμμένα από την πράξη και όχι από τη θεωρία.',
     updated: 'Ενημέρωση',
-    backToPortfolio: 'Πίσω στην αρχική',
     rssTitle: 'Dimitrios P. Batsilis — Άρθρα',
     rssDescription: 'Ψηφιοποίηση, δεδομένα, διασυνδέσεις και AI για επιχειρήσεις.',
     articleCta: {
@@ -309,7 +314,6 @@ export const BLOG_UI: Record<PostLocale, BlogStrings> = {
     heading: 'Architecture Insights & Writing',
     intro: 'Practical articles on digitalisation, data, integrations and AI, written from delivery rather than theory.',
     updated: 'Updated',
-    backToPortfolio: 'Back to portfolio',
     rssTitle: 'Dimitrios P. Batsilis — Writing',
     rssDescription: 'Digitalisation, data, integrations and AI for businesses.',
     articleCta: {
