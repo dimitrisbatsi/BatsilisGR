@@ -43,8 +43,19 @@ const posts = defineCollection({
   }),
 });
 
+/** Legal notice and privacy policy, one entry per locale. */
+const legal = defineCollection({
+  loader: glob({ base: './src/content/legal', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    updatedDate: z.coerce.date(),
+  }),
+});
+
 export const collections = {
   experience,
   projects,
   posts,
+  legal,
 };

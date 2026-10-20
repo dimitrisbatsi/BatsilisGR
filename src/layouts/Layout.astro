@@ -1,5 +1,21 @@
 ---
 import "../styles/global.css";
+// Self-hosted fonts: Vite bundles the files under /_astro/, so no visitor IP reaches a third-party font CDN (GDPR).
+// Each weight file covers every subset via unicode-range; browsers fetch only the subsets a page uses.
+import "@fontsource/inter/300.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
+import "@fontsource/geist-mono/300.css";
+import "@fontsource/geist-mono/400.css";
+import "@fontsource/geist-mono/500.css";
+import "@fontsource/geist-mono/600.css";
+import "@fontsource/geist-mono/700.css";
+// JetBrains Mono supplies the Greek glyphs that Geist Mono lacks
+import "@fontsource/jetbrains-mono/400.css";
+import "@fontsource/jetbrains-mono/500.css";
+import "@fontsource/jetbrains-mono/600.css";
 import Analytics from "@vercel/analytics/astro";
 import LanguageSwitcher from "../components/LanguageSwitcher.astro";
 import {
@@ -11,8 +27,8 @@ import {
   type JsonLd,
   type OgImage,
 } from "../lib/seo";
-import { DEFAULT_LOCALE, LOCALES, LOCALE_META, rssPath, type Alternates, type Locale } from "../i18n/config";
-import { UI } from "../i18n/ui";
+import { DEFAULT_LOCALE, LOCALES, LOCALE_META, X_DEFAULT_LOCALE, legalPath, postLocaleFor, rssPath, type Alternates, type Locale } from "../i18n/config";
+import { BLOG_UI, UI } from "../i18n/ui";
 
 interface Props {
   locale: Locale;
@@ -34,6 +50,7 @@ const { locale, alternates = {}, type = "website", publishedTime, modifiedTime, 
   Astro.props;
 const t = UI[locale];
 const meta = LOCALE_META[locale];
+const feedLocale = postLocaleFor(locale);
 const title = Astro.props.title ?? t.meta.title;
 const description = Astro.props.description ?? t.meta.description;
 const image = Astro.props.image ?? { ...DEFAULT_OG_IMAGE, alt: t.meta.ogImageAlt };
@@ -45,7 +62,7 @@ const hreflangLinks = LOCALES.flatMap((l) => {
   const path = alternates[l];
   return path ? [{ hreflang: LOCALE_META[l].htmlLang, href: new URL(path, site).href }] : [];
 });
-const xDefault = alternates[DEFAULT_LOCALE];
+const xDefault = alternates[X_DEFAULT_LOCALE] ?? alternates[DEFAULT_LOCALE];
 const otherOgLocales = LOCALES.filter((l) => l !== locale && alternates[l]).map((l) => LOCALE_META[l].ogLocale);
 ---
 
@@ -66,7 +83,7 @@ const otherOgLocales = LOCALES.filter((l) => l !== locale && alternates[l]).map(
     {!noindex && hreflangLinks.map((link) => <link rel="alternate" hreflang={link.hreflang} href={link.href} />)}
     {!noindex && xDefault && <link rel="alternate" hreflang="x-default" href={new URL(xDefault, site).href} />}
 
-    <link rel="alternate" type="application/rss+xml" title={t.blog.rssTitle} href={new URL(rssPath(locale), site)} />
+    <link rel="alternate" type="application/rss+xml" title={BLOG_UI[feedLocale].rssTitle} href={new URL(rssPath(feedLocale), site)} />
 
     <!-- Open Graph -->
     <meta property="og:type" content={type} />
@@ -101,14 +118,6 @@ const otherOgLocales = LOCALES.filter((l) => l !== locale && alternates[l]).map(
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <!-- Fonts: JetBrains Mono supplies the Greek glyphs that Geist Mono lacks -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Geist+Mono:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body
     class="relative bg-bg-primary text-zinc-300 selection:bg-zinc-800 selection:text-zinc-50 min-h-screen antialiased flex flex-col justify-between"
@@ -126,12 +135,13 @@ const otherOgLocales = LOCALES.filter((l) => l !== locale && alternates[l]).map(
     <footer
       class="border-t border-border-primary py-8 text-center text-xs font-mono text-zinc-500 max-w-5xl mx-auto w-full px-6 flex flex-col md:flex-row justify-between items-center gap-4"
     >
-      <div>
-        &copy; {new Date().getFullYear()} {AUTHOR.name}. {t.footer.rights}
+      <div class="flex flex-col items-center md:items-start gap-2">
+        <span>&copy; {new Date().getFullYear()} {AUTHOR.name}. {t.footer.rights}</span>
+        <a href={legalPath(locale)} class="hover:text-brand-accent transition-colors duration-200">{t.footer.legal}</a>
       </div>
-      <div class="flex gap-4">
+      <div class="flex flex-col md:flex-row items-center gap-2 md:gap-4">
         <span>{t.footer.location}</span>
-        <span class="text-zinc-700">|</span>
+        <span class="hidden md:inline text-zinc-700">|</span>
         <span>{t.footer.builtWith}</span>
       </div>
     </footer>

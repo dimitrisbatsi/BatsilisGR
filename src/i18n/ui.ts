@@ -1,4 +1,4 @@
-import type { Locale } from './config';
+import type { Locale, PostLocale } from './config';
 
 export interface Service {
   id: string;
@@ -22,10 +22,20 @@ export interface SectionCopy {
 export interface UiStrings {
   meta: { title: string; description: string; ogImageAlt: string };
   roleBadge: string;
-  contact: { email: string; phone: string; location: string; links: string; locationValue: string };
+  contact: {
+    email: string;
+    phone: string;
+    location: string;
+    links: string;
+    languages: string;
+    locationValue: string;
+    /** Languages the author works in, which may differ from the page language. */
+    languagesValue: string;
+  };
   nav: { sections: string; language: string };
   status: string;
   timezone: string;
+  /** On pages in a language the author does not work in, the label names the working language. */
   cta: { label: string; mailSubject: string };
   sections: {
     profile: SectionCopy;
@@ -38,18 +48,21 @@ export interface UiStrings {
   services: Service[];
   visitWebsite: string;
   backToPortfolio: string;
-  footer: { rights: string; location: string; builtWith: string };
+  /** Link from the home page and articles to the article index. */
+  allArticles: string;
+  footer: { rights: string; location: string; builtWith: string; legal: string };
+}
+
+/** Strings used only by article pages, the article index and feeds, which exist in POST_LOCALES. */
+export interface BlogStrings {
+  metaTitle: string;
+  metaDescription: string;
+  heading: string;
+  intro: string;
+  updated: string;
+  rssTitle: string;
+  rssDescription: string;
   articleCta: { heading: string; body: string };
-  blog: {
-    metaTitle: string;
-    metaDescription: string;
-    heading: string;
-    intro: string;
-    allArticles: string;
-    updated: string;
-    rssTitle: string;
-    rssDescription: string;
-  };
 }
 
 export const UI: Record<Locale, UiStrings> = {
@@ -66,7 +79,9 @@ export const UI: Record<Locale, UiStrings> = {
       phone: 'Τηλέφωνο',
       location: 'Τοποθεσία',
       links: 'Links',
+      languages: 'Γλώσσες',
       locationValue: 'Θεσσαλονίκη',
+      languagesValue: 'Ελληνικά · Αγγλικά',
     },
     nav: { sections: 'Ενότητες', language: 'Γλώσσα' },
     status: 'Διαθέσιμος για νέες συνεργασίες',
@@ -117,25 +132,12 @@ export const UI: Record<Locale, UiStrings> = {
     ],
     visitWebsite: 'Επίσκεψη',
     backToPortfolio: 'Πίσω στην αρχική',
+    allArticles: 'Όλα τα άρθρα',
     footer: {
       rights: 'Με επιφύλαξη παντός δικαιώματος.',
       location: 'Θεσσαλονίκη',
       builtWith: 'Κατασκευή με Astro & Tailwind v4',
-    },
-    articleCta: {
-      heading: 'Έχετε παρόμοια πρόκληση στην επιχείρησή σας;',
-      body: 'Σχεδιάζω και υλοποιώ εσωτερικά εργαλεία, διασυνδέσεις, analytics και AI λύσεις για επιχειρήσεις. Πείτε μου τι σας απασχολεί και θα σας προτείνω το πιο απλό βήμα που αποδίδει.',
-    },
-    blog: {
-      metaTitle: 'Άρθρα | Dimitrios P. Batsilis',
-      metaDescription:
-        'Άρθρα για ψηφιοποίηση επιχειρήσεων, διασυνδέσεις ERP και e-shop, analytics και AI στην πράξη, από την εμπειρία υλοποίησης.',
-      heading: 'Άρθρα & Σκέψεις',
-      intro: 'Πρακτικά άρθρα για ψηφιοποίηση, δεδομένα, διασυνδέσεις και AI, γραμμένα από την πράξη και όχι από τη θεωρία.',
-      allArticles: 'Όλα τα άρθρα',
-      updated: 'Ενημέρωση',
-      rssTitle: 'Dimitrios P. Batsilis — Άρθρα',
-      rssDescription: 'Ψηφιοποίηση, δεδομένα, διασυνδέσεις και AI για επιχειρήσεις.',
+      legal: 'Νομικά & Απόρρητο',
     },
   },
   en: {
@@ -151,7 +153,9 @@ export const UI: Record<Locale, UiStrings> = {
       phone: 'Phone',
       location: 'Location',
       links: 'Links',
+      languages: 'Languages',
       locationValue: 'Thessaloniki, Greece',
+      languagesValue: 'English · Greek',
     },
     nav: { sections: 'Sections', language: 'Language' },
     status: 'Available for new engagements',
@@ -202,25 +206,119 @@ export const UI: Record<Locale, UiStrings> = {
     ],
     visitWebsite: 'Visit Website',
     backToPortfolio: 'Back to portfolio',
+    allArticles: 'All articles',
     footer: {
       rights: 'All rights reserved.',
       location: 'Thessaloniki, Greece',
       builtWith: 'Built with Astro & Tailwind v4',
+      legal: 'Legal & Privacy',
     },
+  },
+  de: {
+    meta: {
+      title: 'Dimitrios P. Batsilis | Digitalisierung, Daten & Integration',
+      description:
+        'Solutions Architect für die Digitalisierung von Unternehmen: interne Tools und Automatisierung, Dashboards mit ETL, ERP- und CRM-Anbindungen und KI-Agenten. Zusammenarbeit auf Englisch.',
+      ogImageAlt: 'Dimitrios P. Batsilis — Digital Product & Solutions Architect',
+    },
+    roleBadge: 'Digital Product & Solutions Architect',
+    contact: {
+      email: 'E-Mail',
+      phone: 'Telefon',
+      location: 'Standort',
+      links: 'Links',
+      languages: 'Sprachen',
+      locationValue: 'Thessaloniki, Griechenland',
+      languagesValue: 'Englisch · Griechisch',
+    },
+    nav: { sections: 'Bereiche', language: 'Sprache' },
+    status: 'Verfügbar für neue Projekte',
+    timezone: 'TZ: EET (UTC+2 / UTC+3) · 1 h vor MEZ',
+    // English subject nudges the sender to write in English; the (DE) suffix attributes the inquiry to this page
+    cta: { label: 'Projekt besprechen (auf Englisch)', mailSubject: 'Project inquiry via batsilis.gr (DE)' },
+    sections: {
+      profile: { id: 'profile', heading: 'Profil & Arbeitsweise', navLabel: 'Profil' },
+      services: { id: 'services', heading: 'Leistungen', navLabel: 'Leistungen' },
+      ventures: { id: 'ventures', heading: 'Digitale Produkte & eigene Projekte', navLabel: 'Produkte' },
+      experience: { id: 'experience', heading: 'Berufserfahrung', navLabel: 'Erfahrung' },
+      writing: { id: 'writing', heading: 'Fachartikel (auf Englisch)', navLabel: 'Artikel' },
+    },
+    profile: [
+      'Ich helfe Unternehmen, ihre Arbeitsabläufe zu digitalisieren: Ich konzipiere und baue die internen Tools, Automatisierungen, Datenflüsse und Schnittstellen, die manuelle Arbeit und verstreute Excel-Tabellen ersetzen.',
+      'Mein Hintergrund umfasst Solutions Engineering für Unternehmenssoftware, Plattformarchitektur mit .NET, entkoppelte Frontends (Vue.js, Nuxt 3, Astro) sowie Datenpipelines mit Python und SQL, die Power BI speisen.',
+      'Ich begleite Projekte von Anfang bis Ende: von der Analyse des Prozesses und der Wahl der passenden Plattform, ob individuelle Lösung oder bestehendes Werkzeug wie Jira, über die Umsetzung bis zur Einführung und Nutzung im Team.',
+      'Für Unternehmen in Deutschland, Österreich und der Schweiz arbeite ich remote aus Thessaloniki. Gespräche und Projektunterlagen laufen auf Englisch.',
+    ],
+    services: [
+      {
+        id: 'digitalisation',
+        title: 'Digitalisierung & interne Tools',
+        label: 'Automatisierung',
+        body: 'Konzeption und Umsetzung interner Automatisierungen und Tools, oder Einführung und Anpassung bestehender Plattformen, etwa der Umstieg von einem veralteten Ticketsystem auf Jira oder der Ersatz verstreuter Handbücher durch eine moderne Dokumentationsplattform.',
+        tags: ['Process Automation', 'Jira', 'Internal Platforms', '.NET'],
+      },
+      {
+        id: 'analytics',
+        title: 'Analytics, Dashboards & ETL',
+        label: 'Daten',
+        body: 'Daten aus ERP-Systemen, Datenbanken und Excel über zuverlässige ETL-Pipelines zusammenführen und in Dashboards verwandeln, denen das Unternehmen wirklich vertraut.',
+        tags: ['SQL Server', 'PostgreSQL', 'Python ETL', 'Power BI'],
+      },
+      {
+        id: 'integrations',
+        title: 'Schnittstellen & Integration',
+        label: 'Integration',
+        body: 'ERP, CRM, Onlineshop und interne Systeme verbinden, damit Daten automatisch von einem System ins andere fließen, statt von Hand neu eingetippt zu werden.',
+        tags: ['REST & GraphQL APIs', 'ERP Integrations', 'Webhooks', 'Scheduled Sync'],
+      },
+      {
+        id: 'ai',
+        title: 'KI-Assistenten & Agenten',
+        label: 'Demnächst',
+        body: 'Assistenten und Agenten auf Basis Ihrer eigenen Dokumente und Daten, die Teams wie den Kundensupport mit schnellen Antworten samt Quellenangabe unterstützen.',
+        tags: ['LLMs', 'RAG', 'Agents'],
+        upcoming: true,
+      },
+    ],
+    visitWebsite: 'Website besuchen',
+    backToPortfolio: 'Zurück zur Startseite',
+    allArticles: 'Alle Artikel (Englisch)',
+    footer: {
+      rights: 'Alle Rechte vorbehalten.',
+      location: 'Thessaloniki, Griechenland',
+      builtWith: 'Erstellt mit Astro & Tailwind v4',
+      legal: 'Impressum & Datenschutz',
+    },
+  },
+};
+
+export const BLOG_UI: Record<PostLocale, BlogStrings> = {
+  el: {
+    metaTitle: 'Άρθρα | Dimitrios P. Batsilis',
+    metaDescription:
+      'Άρθρα για ψηφιοποίηση επιχειρήσεων, διασυνδέσεις ERP και e-shop, analytics και AI στην πράξη, από την εμπειρία υλοποίησης.',
+    heading: 'Άρθρα & Σκέψεις',
+    intro: 'Πρακτικά άρθρα για ψηφιοποίηση, δεδομένα, διασυνδέσεις και AI, γραμμένα από την πράξη και όχι από τη θεωρία.',
+    updated: 'Ενημέρωση',
+    rssTitle: 'Dimitrios P. Batsilis — Άρθρα',
+    rssDescription: 'Ψηφιοποίηση, δεδομένα, διασυνδέσεις και AI για επιχειρήσεις.',
+    articleCta: {
+      heading: 'Έχετε παρόμοια πρόκληση στην επιχείρησή σας;',
+      body: 'Σχεδιάζω και υλοποιώ εσωτερικά εργαλεία, διασυνδέσεις, analytics και AI λύσεις για επιχειρήσεις. Πείτε μου τι σας απασχολεί και θα σας προτείνω το πιο απλό βήμα που αποδίδει.',
+    },
+  },
+  en: {
+    metaTitle: 'Writing | Dimitrios P. Batsilis',
+    metaDescription:
+      'Articles on business digitalisation, ERP and e-shop integrations, analytics and practical AI, drawn from hands-on delivery.',
+    heading: 'Architecture Insights & Writing',
+    intro: 'Practical articles on digitalisation, data, integrations and AI, written from delivery rather than theory.',
+    updated: 'Updated',
+    rssTitle: 'Dimitrios P. Batsilis — Writing',
+    rssDescription: 'Digitalisation, data, integrations and AI for businesses.',
     articleCta: {
       heading: 'Facing a similar challenge in your business?',
       body: 'I design and build internal tools, integrations, analytics and AI solutions for companies. Tell me what is holding you back and I will suggest the simplest step that pays off.',
-    },
-    blog: {
-      metaTitle: 'Writing | Dimitrios P. Batsilis',
-      metaDescription:
-        'Articles on business digitalisation, ERP and e-shop integrations, analytics and practical AI, drawn from hands-on delivery.',
-      heading: 'Architecture Insights & Writing',
-      intro: 'Practical articles on digitalisation, data, integrations and AI, written from delivery rather than theory.',
-      allArticles: 'All articles',
-      updated: 'Updated',
-      rssTitle: 'Dimitrios P. Batsilis — Writing',
-      rssDescription: 'Digitalisation, data, integrations and AI for businesses.',
     },
   },
 };

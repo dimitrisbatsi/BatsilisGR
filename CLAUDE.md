@@ -7,6 +7,7 @@ Working notes for Claude Code sessions on batsilis.gr.
 - Astro 6 (static), Tailwind v4, content collections in `src/content/<collection>/{el,en}/`.
 - Greek is the default locale (`/`, `/arthra/<slug>/`); English lives under `/en/` (`/en/blog/<slug>/`).
 - Translations pair by identical filename in `el/` and `en/`.
+- German (`/de/`) is a home page only, for clients in Germany, Austria and Switzerland: `src/i18n/ui.ts` plus `experience/de/` and `projects/de/`. The author works in Greek and English only, so German pages say so and link to the English articles; there is no `posts/de/`. Keep German copy in step when the home page or those collections change.
 - Canonical host: `https://www.batsilis.gr`.
 - Before pushing: `npm run check` and `npm run build`.
 
@@ -23,6 +24,7 @@ Working notes for Claude Code sessions on batsilis.gr.
 - Never invent numbers, clients or results. Use only figures the author supplied.
 - Work done for an employer or client is described generically: no company or client names, no internal tool or product names, no unpublished plans.
 - Site contact address: `hello@chilistudio.gr`.
+- Legal notice and privacy policy live in `src/content/legal/{el,en,de}/notice.md` (`/nomika/`, `/en/legal/`, `/de/impressum/`). The author is the responsible person, not yet registered as self-employed: no street address or VAT ID until registration, then add both to all three files and bump `updatedDate`. Update the privacy section whenever the site adds a third-party service, cookie or form.
 
 ## Plain language
 

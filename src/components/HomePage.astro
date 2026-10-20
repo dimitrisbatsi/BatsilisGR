@@ -11,7 +11,7 @@ import {
   studioSchema,
   websiteSchema,
 } from '../lib/seo';
-import { LOCALES, LOCALE_META, blogIndexPath, homePath, type Alternates, type Locale } from '../i18n/config';
+import { LOCALES, LOCALE_META, blogIndexPath, homePath, postLocaleFor, type Alternates, type Locale } from '../i18n/config';
 import { getLocalizedCollection, getPublishedPosts } from '../i18n/content';
 import { UI } from '../i18n/ui';
 
@@ -27,7 +27,8 @@ const byOrder = <T extends { entry: { data: { order: number } } }>(a: T, b: T) =
 
 const experience = (await getLocalizedCollection('experience', locale)).sort(byOrder);
 const projects = (await getLocalizedCollection('projects', locale)).sort(byOrder);
-const posts = await getPublishedPosts(locale);
+const postLocale = postLocaleFor(locale);
+const posts = await getPublishedPosts(postLocale);
 
 const experienceWithContent = await Promise.all(
   experience.map(async ({ entry }) => ({ entry, Content: (await render(entry)).Content })),
@@ -98,6 +99,10 @@ const contactLabelClass = 'text-zinc-500 w-[4.5rem] shrink-0 text-[11px] upperca
           <div class="flex items-center gap-2">
             <span class={contactLabelClass}>{t.contact.location}</span>
             <span class="text-zinc-300">{t.contact.locationValue}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class={contactLabelClass}>{t.contact.languages}</span>
+            <span class="text-zinc-300">{t.contact.languagesValue}</span>
           </div>
           <div class="flex items-center gap-2 pt-1">
             <span class={contactLabelClass}>{t.contact.links}</span>
@@ -297,10 +302,11 @@ const contactLabelClass = 'text-zinc-500 w-[4.5rem] shrink-0 text-[11px] upperca
         <PostList locale={locale} posts={posts.slice(0, 3)} />
         {posts.length > 0 && (
           <a
-            href={blogIndexPath(locale)}
+            href={blogIndexPath(postLocale)}
+            hreflang={postLocale === locale ? undefined : LOCALE_META[postLocale].htmlLang}
             class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-zinc-400 hover:text-brand-accent transition-colors duration-200 group"
           >
-            <span>{t.blog.allArticles}</span>
+            <span>{t.allArticles}</span>
             <span class="group-hover:translate-x-0.5 transition-transform duration-200">&rarr;</span>
           </a>
         )}

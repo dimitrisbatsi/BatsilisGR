@@ -1,3 +1,5 @@
+import { WORKING_LANGUAGES } from '../i18n/config';
+
 export const SITE_URL = 'https://www.batsilis.gr';
 
 export const AUTHOR = {
@@ -34,6 +36,9 @@ export const AUTHOR = {
     'AI agents',
   ],
 } as const;
+
+/** Countries targeted by the service offer, for schema.org areaServed. */
+export const AREA_SERVED = ['Greece', 'Germany', 'Austria', 'Switzerland'] as const;
 
 export const STUDIO = {
   name: 'Chili Studio',
@@ -84,7 +89,7 @@ export function personSchema(site: URL, description?: string): JsonLd {
       addressCountry: AUTHOR.country,
     },
     knowsAbout: [...AUTHOR.knowsAbout],
-    knowsLanguage: ['el', 'en'],
+    knowsLanguage: [...WORKING_LANGUAGES],
     worksFor: { '@id': nodeId(site, 'studio') },
     sameAs: [...AUTHOR.sameAs],
   };
@@ -151,7 +156,15 @@ export function professionalServiceSchema(
       addressLocality: AUTHOR.locality,
       addressCountry: AUTHOR.country,
     },
-    areaServed: { '@type': 'Country', name: 'Greece' },
+    areaServed: AREA_SERVED.map((country) => ({ '@type': 'Country', name: country })),
+    // The site is published in more languages than the author works in; contact stays in these
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'sales',
+      email: AUTHOR.email,
+      telephone: AUTHOR.telephone,
+      availableLanguage: [...WORKING_LANGUAGES],
+    },
     founder: { '@id': nodeId(site, 'person') },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',

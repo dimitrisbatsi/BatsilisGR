@@ -2,18 +2,19 @@
 import { render, type CollectionEntry } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import { AUTHOR, DEFAULT_OG_IMAGE, SITE_URL, documentTitle, personSchema, studioSchema, websiteSchema } from '../lib/seo';
-import { LOCALES, LOCALE_META, blogIndexPath, homePath, postPath, type Alternates, type Locale } from '../i18n/config';
+import { LOCALES, LOCALE_META, blogIndexPath, homePath, postPath, type Alternates, type PostLocale } from '../i18n/config';
 import { getPostLocales, lastModified } from '../i18n/content';
-import { UI } from '../i18n/ui';
+import { BLOG_UI, UI } from '../i18n/ui';
 
 interface Props {
-  locale: Locale;
+  locale: PostLocale;
   slug: string;
   post: CollectionEntry<'posts'>;
 }
 
 const { locale, slug, post } = Astro.props;
 const t = UI[locale];
+const b = BLOG_UI[locale];
 const { Content } = await render(post);
 
 const alternates: Alternates = Object.fromEntries(
@@ -83,7 +84,7 @@ const formattedUpdated = updatedDate?.toLocaleDateString(LOCALE_META[locale].dat
         {updatedDate && (
           <>
             <span class="text-zinc-700">&middot;</span>
-            <span>{t.blog.updated} <time datetime={updatedDate.toISOString()}>{formattedUpdated}</time></span>
+            <span>{b.updated} <time datetime={updatedDate.toISOString()}>{formattedUpdated}</time></span>
           </>
         )}
         <span class="text-zinc-700">&middot;</span>
@@ -108,8 +109,8 @@ const formattedUpdated = updatedDate?.toLocaleDateString(LOCALE_META[locale].dat
 
     <!-- Article CTA: routes readers to a conversation, tagging the email with the article -->
     <aside class="mt-12 p-6 rounded-xl border border-brand-accent/30 bg-brand-accent/5 space-y-4">
-      <h2 class="text-lg font-semibold text-white">{t.articleCta.heading}</h2>
-      <p class="text-zinc-300 text-sm leading-relaxed">{t.articleCta.body}</p>
+      <h2 class="text-lg font-semibold text-white">{b.articleCta.heading}</h2>
+      <p class="text-zinc-300 text-sm leading-relaxed">{b.articleCta.body}</p>
       <a
         href={ctaHref}
         class="group inline-flex items-center gap-2 px-4 py-2 rounded-md bg-brand-accent text-bg-primary text-xs font-mono font-semibold tracking-wide hover:bg-brand-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent transition-colors duration-200"
@@ -125,7 +126,7 @@ const formattedUpdated = updatedDate?.toLocaleDateString(LOCALE_META[locale].dat
         class="inline-flex items-center gap-2 text-xs font-mono uppercase text-zinc-500 hover:text-brand-accent transition-colors duration-200 group"
       >
         <span class="group-hover:-translate-x-1 transition-transform duration-200">&larr;</span>
-        {t.blog.allArticles}
+        {t.allArticles}
       </a>
     </nav>
 
