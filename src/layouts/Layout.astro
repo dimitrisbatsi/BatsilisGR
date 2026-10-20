@@ -11,8 +11,8 @@ import {
   type JsonLd,
   type OgImage,
 } from "../lib/seo";
-import { DEFAULT_LOCALE, LOCALES, LOCALE_META, rssPath, type Alternates, type Locale } from "../i18n/config";
-import { UI } from "../i18n/ui";
+import { DEFAULT_LOCALE, LOCALES, LOCALE_META, postLocaleFor, rssPath, type Alternates, type Locale } from "../i18n/config";
+import { BLOG_UI, UI } from "../i18n/ui";
 
 interface Props {
   locale: Locale;
@@ -34,6 +34,7 @@ const { locale, alternates = {}, type = "website", publishedTime, modifiedTime, 
   Astro.props;
 const t = UI[locale];
 const meta = LOCALE_META[locale];
+const feedLocale = postLocaleFor(locale);
 const title = Astro.props.title ?? t.meta.title;
 const description = Astro.props.description ?? t.meta.description;
 const image = Astro.props.image ?? { ...DEFAULT_OG_IMAGE, alt: t.meta.ogImageAlt };
@@ -66,7 +67,7 @@ const otherOgLocales = LOCALES.filter((l) => l !== locale && alternates[l]).map(
     {!noindex && hreflangLinks.map((link) => <link rel="alternate" hreflang={link.hreflang} href={link.href} />)}
     {!noindex && xDefault && <link rel="alternate" hreflang="x-default" href={new URL(xDefault, site).href} />}
 
-    <link rel="alternate" type="application/rss+xml" title={t.blog.rssTitle} href={new URL(rssPath(locale), site)} />
+    <link rel="alternate" type="application/rss+xml" title={BLOG_UI[feedLocale].rssTitle} href={new URL(rssPath(feedLocale), site)} />
 
     <!-- Open Graph -->
     <meta property="og:type" content={type} />

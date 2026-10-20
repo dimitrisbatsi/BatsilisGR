@@ -1,8 +1,21 @@
-export const LOCALES = ['el', 'en'] as const;
+export const LOCALES = ['el', 'en', 'de'] as const;
 
 export type Locale = (typeof LOCALES)[number];
 
 export const DEFAULT_LOCALE: Locale = 'el';
+
+/** Locales with their own articles. German pages link to the English ones, since all collaboration runs in Greek or English. */
+export const POST_LOCALES = ['el', 'en'] as const satisfies readonly Locale[];
+
+export type PostLocale = (typeof POST_LOCALES)[number];
+
+/** Languages the author speaks with clients; deliberately narrower than the languages the site is published in. */
+export const WORKING_LANGUAGES = ['el', 'en'] as const satisfies readonly Locale[];
+
+/** Locale whose articles a page in the given locale lists and links to. */
+export function postLocaleFor(locale: Locale): PostLocale {
+  return locale === 'el' ? 'el' : 'en';
+}
 
 interface LocaleMeta {
   /** BCP 47 tag for <html lang> and hreflang. */
@@ -20,6 +33,7 @@ interface LocaleMeta {
 export const LOCALE_META: Record<Locale, LocaleMeta> = {
   el: { htmlLang: 'el', ogLocale: 'el_GR', dateLocale: 'el-GR', label: 'ΕΛ', name: 'Ελληνικά' },
   en: { htmlLang: 'en', ogLocale: 'en_US', dateLocale: 'en-US', label: 'EN', name: 'English' },
+  de: { htmlLang: 'de', ogLocale: 'de_DE', dateLocale: 'de-DE', label: 'DE', name: 'Deutsch' },
 };
 
 /** Map of locale to site-relative path for the same page in each language. */
@@ -30,18 +44,22 @@ export function homePath(locale: Locale): string {
 }
 
 /** Greek posts live under /arthra/ so the legacy English /blog/* URLs can 301 to /en/blog/*. */
-export function postPath(locale: Locale, slug: string): string {
+export function postPath(locale: PostLocale, slug: string): string {
   return locale === 'el' ? `/arthra/${slug}/` : `/en/blog/${slug}/`;
 }
 
-export function blogIndexPath(locale: Locale): string {
+export function blogIndexPath(locale: PostLocale): string {
   return locale === 'el' ? '/arthra/' : '/en/blog/';
 }
 
-export function rssPath(locale: Locale): string {
+export function rssPath(locale: PostLocale): string {
   return locale === DEFAULT_LOCALE ? '/rss.xml' : `/${locale}/rss.xml`;
 }
 
 export function isLocale(value: string): value is Locale {
   return (LOCALES as readonly string[]).includes(value);
+}
+
+export function isPostLocale(value: Locale): value is PostLocale {
+  return (POST_LOCALES as readonly Locale[]).includes(value);
 }

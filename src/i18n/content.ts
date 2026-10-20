@@ -1,5 +1,5 @@
 import { getCollection, type CollectionEntry, type CollectionKey } from 'astro:content';
-import { isLocale, type Locale } from './config';
+import { LOCALES, isLocale, isPostLocale, type Locale, type PostLocale } from './config';
 
 export interface LocalizedEntry<C extends CollectionKey> {
   entry: CollectionEntry<C>;
@@ -12,7 +12,7 @@ export interface LocalizedEntry<C extends CollectionKey> {
 function splitId(id: string): { locale: Locale; slug: string } {
   const [prefix, ...rest] = id.split('/');
   if (!prefix || !isLocale(prefix) || rest.length === 0) {
-    throw new Error(`Content entry "${id}" must live in a locale folder (el/ or en/).`);
+    throw new Error(`Content entry "${id}" must live in a locale folder (${LOCALES.map((l) => `${l}/`).join(', ')}).`);
   }
   return { locale: prefix, slug: rest.join('/') };
 }
@@ -32,7 +32,7 @@ export function lastModified(post: CollectionEntry<'posts'>): Date {
   return post.data.updatedDate ?? post.data.pubDate;
 }
 
-export async function getPublishedPosts(locale: Locale): Promise<LocalizedEntry<'posts'>[]> {
+export async function getPublishedPosts(locale: PostLocale): Promise<LocalizedEntry<'posts'>[]> {
   const posts = await getLocalizedCollection('posts', locale);
   return posts
     .filter(({ entry }) => !entry.data.draft)
@@ -44,7 +44,15 @@ export async function getPublishedPosts(locale: Locale): Promise<LocalizedEntry<
 }
 
 /** Locales in which a published translation of the given post exists. */
-export async function getPostLocales(slug: string): Promise<Locale[]> {
+export async function getPostLocales(slug: string): Promise<PostLocale[]> {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
-  return posts.map((p) => splitId(p.id)).filter((p) => p.slug === slug).map((p) => p.locale);
+  return posts
+    .map((p) => splitId(p.id))
+    .filter((p) => p.slug === slug)
+    .map(({ locale }) => {
+      if (!isPostLocale(locale)) {
+        throw new Error(`Post "${slug}" is in ${locale}/, which has no article routes; articles ship in el/ and en/ only.`);
+      }
+      return locale;
+    });
 }

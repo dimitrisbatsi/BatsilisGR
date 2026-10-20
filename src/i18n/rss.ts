@@ -1,15 +1,15 @@
 import rss from '@astrojs/rss';
-import { LOCALE_META, postPath, type Locale } from './config';
+import { LOCALE_META, postPath, type PostLocale } from './config';
 import { getPublishedPosts } from './content';
-import { UI } from './ui';
+import { BLOG_UI } from './ui';
 import { SITE_URL } from '../lib/seo';
 
-export async function buildFeed(locale: Locale, site: URL | undefined): Promise<Response> {
-  const t = UI[locale];
+export async function buildFeed(locale: PostLocale, site: URL | undefined): Promise<Response> {
+  const t = BLOG_UI[locale];
   const posts = await getPublishedPosts(locale);
   return rss({
-    title: t.blog.rssTitle,
-    description: t.blog.rssDescription,
+    title: t.rssTitle,
+    description: t.rssDescription,
     site: site ?? SITE_URL,
     items: posts.map(({ entry, slug }) => ({
       title: entry.data.title,

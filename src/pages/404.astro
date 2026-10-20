@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { homePath } from '../i18n/config';
 
-// One static 404 serves every route, so it carries both languages.
+// One static 404 serves every route, so it carries every language.
 const linkClass =
   'inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-brand-accent/10 hover:bg-brand-accent/20 border border-brand-accent/30 hover:border-brand-accent/60 text-brand-accent hover:text-white text-xs font-mono font-medium uppercase transition-all duration-200 group';
 ---
@@ -36,6 +36,17 @@ const linkClass =
       <a href={homePath('en')} class={linkClass}>
         <span class="group-hover:-translate-x-1 transition-transform duration-200">&larr;</span>
         Back to portfolio
+      </a>
+    </div>
+
+    <div lang="de" class="space-y-4 pt-8 border-t border-zinc-800/80">
+      <p class="text-lg font-semibold text-zinc-200">Diese Seite existiert nicht.</p>
+      <p class="text-zinc-400 text-sm leading-relaxed">
+        Der Link ist möglicherweise veraltet oder die Adresse wurde falsch eingegeben. Alle Inhalte sind über die Startseite erreichbar.
+      </p>
+      <a href={homePath('de')} class={linkClass}>
+        <span class="group-hover:-translate-x-1 transition-transform duration-200">&larr;</span>
+        Zur Startseite
       </a>
     </div>
   </section>

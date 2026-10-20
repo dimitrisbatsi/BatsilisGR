@@ -38,6 +38,7 @@ export const GET: APIRoute = async ({ site }) => {
     '',
     `- [Portfolio (Greek)](${abs(homePath('el'))}): services, products, experience and articles in Greek`,
     `- [Portfolio (English)](${abs(homePath('en'))}): the same content in English`,
+    `- [Portfolio (German)](${abs(homePath('de'))}): services, products and experience in German for clients in Germany and Switzerland; collaboration runs in English or Greek, articles are in English`,
     `- [Articles (Greek)](${abs(blogIndexPath('el'))}) · [RSS](${abs(rssPath('el'))})`,
     `- [Articles (English)](${abs(blogIndexPath('en'))}) · [RSS](${abs(rssPath('en'))})`,
     '',
